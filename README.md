@@ -100,7 +100,7 @@ You will always be able to run and modify the `tmole` client and service free of
 Pull requests are welcome!
 
 #### How do you pay the bills? How can I support the project?
-I pay the bills through paid subscriptions to the hosted `tmole` service. If you'd like to support this project, purchasing a paid subscription is the best way to do it.
+I pay the bills through paid subscriptions to the hosted Tunnelmole service. If you'd like to support this project, purchasing a paid subscription is the best way to do it.
 
 
 ### Links and resources
