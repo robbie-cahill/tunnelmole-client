@@ -1,0 +1,22 @@
+.idea
+.vscode
+scripts
+node_modules
+jspm_packages
+npm-debug.log
+debug.log
+storage
+config-instance.ts
+config-instance.production.ts
+config-instance.local.ts
+*.log
+*.js
+*.js.map
+sslcert
+packages
+/srv
+
+#Ignore single executable binaries
+tmole.exe
+tmole-linux
+tmole-mac
