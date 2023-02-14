@@ -4,7 +4,7 @@ Tunnelmole is a simple tool to give your locally running HTTP(s) servers a publi
 - A Docker container
 - An API
 - A React or node application
-- A headless CMS such as 'hugo'
+- A headless CMS
 
 So, you could have your app running locally on port `8080`, then by running `tmole 8080` you could have a URL such as `https://df34.tunnelmole.com` routing to your locally running application.
 
