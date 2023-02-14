@@ -6,7 +6,7 @@ Tunnelmole is a simple tool to give your locally running HTTP(s) servers a publi
 - A React or node application
 - A static website
 
-So, you could have your app running locally on port `8080`, then by running `tmole 8080` you could have a URL such as `https://df34.tunnelmole.com` routing to your locally running application.
+So, you could have your application running locally on port `8080`, then by running `tmole 8080` you could have a URL such as `https://df34.tunnelmole.com` routing to your locally running application.
 
 Tunnelmole has been compared to a similar tool known as `ngrok`, but is open source.
 
