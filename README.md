@@ -118,6 +118,7 @@ This repo has a few features to help with your developer experience including sa
 
 Here are some different ways you can help
 - Help with testing Tunnelmole. Install the latest binary or build the latest source release and do your best to break it. If you're able to, create an issue.
+- Spreading the word. As previously mentioned, there is no big company or marketing department. That leaves it up to you to help others by introducing them to Tunnelmole.
 - Fixing bugs
 - Making feature requests. To do this, create a GitHub issue and describe the feature you think Tunnelmole should have
 - Implementing features
