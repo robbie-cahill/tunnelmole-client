@@ -79,7 +79,7 @@ This does a few things for you automatically:
 - Every time you make changes, the code will recompile and Tunnelmole will automatically restart. This saves you time as you won't need to manually recompile and restart the server yourself. This feature is also known as Hot Reload.
 
 You can also invoke the compiled client manually with
-`node dist/src/index.js <port number to forward to>`.
+`node dist/src/index.js <port number to forward to>` after compiling the code with `npm run build`.
 
 #### Debugging
 This project has sourcemaps enabled, so you can set breakpoints in the TypeScript `.ts` files and they should behave normally.
