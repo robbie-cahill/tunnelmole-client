@@ -70,7 +70,7 @@ Run `npm install`
 
 The default settings are fine unless you want to self host your own [tunnelmole service](https://github.com/robbie-cahill/tunnelmole-service/), in which case you'll need to modify the config to point to your server.
 
-#### Star Tunnelmole
+#### Start Tunnelmole
 To start Tunnelmole, run `npm start`. 
 
 This does a few things for you automatically:
