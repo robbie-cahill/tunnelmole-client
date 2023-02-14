@@ -10,7 +10,7 @@ So, you could have your application running locally on port `8080`, then by runn
 
 Tunnelmole has been compared to a similar tool known as `ngrok`, but is open source.
 
-If you are using the default configuration you will a get HTTPs URL and all of its benefits for free. Modern browsers require HTTPs for some newer features like web notifications and PWA's. If you are looking to try these features out without fully setting up HTTPs yourself, a Tunnelmole URL can be used for testing.
+If you are using the default configuration you will get a HTTPs URL for free.
 
 Heres what you could do with your new public URL
 - Automate your life. With a public URL, IFTTT and other automation services can send you webhooks which your code can then react to
