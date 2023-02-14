@@ -70,14 +70,29 @@ Run `npm install`
 
 The default settings are fine unless you want to self host your own [tunnelmole service](https://github.com/robbie-cahill/tunnelmole-service/), in which case you'll need to modify the config to point to your server.
 
-#### Build the project
-Run `npm run build`. If you want live recompilation every time you make a change run `npm run watch`.
-
 #### Run Tunnelmole
-Now run `npm start`. This uses `nodemon` which will automatically restart Tunnelmole every time the compiled JavaScript is updated. You can get hot reload if you combine this with `npm run watch`.
+Now run `npm start`. 
+
+This does a couple of things for you automatically:
+- First, the code will compile automatically
+- Tunnelmole will then start
+- Every time you make changes, the code will recompile and Tunnelmole will automatically restart. This saves you time as you won't need to manually recompile and restart the server yourself
 
 You can also invoke the compiled client manually with
-`node dist/src/index.js <port number to forward to>`
+`node dist/src/index.js <port number to forward to>`.
+
+#### Debugging
+To set up debugging for Visual Studio Code, copy over the example config.
+```
+cp .vscode/launch.json.example .vscode/launch.json
+```
+Once this is done, run "Launch Tunnelmole" from the Run and Debug menu.
+
+While debugging, hot reload is not supported as you'd loose your debug connection each time Tunnelmole restarts. So for every change, you will need to recompile the code (i.e. with `npm run build`) and then restart the debugger.
+
+You can optionally run `npm run watch` to automatically recompile code as you make changes.
+
+By default, Launch Tunnelmole invokes Tunnelmole to forward to port 8001 locally. You can change this by changing the port in the `.vscode/launch.json` config under the "args" section.
 
 ### How it works
 ![How Tunnelmole Works](docs/img/how-tunnelmole-works.png)
