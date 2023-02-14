@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+require('source-map-support').install();
 import program from 'commander';
 import { initialiseClientId } from './identity/client-id-service';
 import { initStorage } from './node-persist/storage';

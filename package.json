@@ -29,6 +29,7 @@
     "node-localstorage": "^2.1.6",
     "toml": "^3.0.0",
     "typescript": "^4.9.4",
+    "source-map-support": "^0.5.21",
     "validator": "^13.0.0",
     "ws": "^7.2.5"
   }
