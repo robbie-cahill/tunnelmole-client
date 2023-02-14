@@ -86,7 +86,7 @@ Here are some different ways you can help
 - Making feature requests. To do this, create a GitHub issue and describe the feature you think Tunnelmole should have
 - Implementing features
 
-For any code changes, you will need to fork this repo and submit a PR. If you've never done this before, GitHub has a very good guide [here](https://docs.github.com/.en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork).
+For any code changes, you will need to fork this repo and submit a PR. If you've never done this before, GitHub has a very good guide [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork).
 
 ### FAQs
 
