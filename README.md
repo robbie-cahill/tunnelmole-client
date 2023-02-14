@@ -1,5 +1,5 @@
 ## Tunnelmole
-Tunnelmole is a simple tool to give your locally running HTTP servers a public URL. For example, you could get a public URL for
+Tunnelmole is a simple tool to give your locally running HTTP(s) servers a public URL. For example, you could get a public URL for
 - A web server
 - Docker container
 - An API
