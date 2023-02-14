@@ -12,6 +12,14 @@ Tunnelmole has been compared to a similar tool known as `ngrok`, but is open sou
 
 If you are using the default configuration you will a get HTTPs URL and all of its benefits for free. Modern browsers require HTTPs for some newer features like web notifications and PWA's. If you are looking to try these features out without fully setting up HTTPs yourself, a Tunnelmole URL can be used for testing.
 
+Heres what you could do with your new public URL
+- Automate your life. With a public URL, IFTTT and other automation services can send you webhooks which your code can then react to
+- Test and debug webhooks locally without stubbing requests. Set a breakpoint, then trigger the webhook provider to hit your URL
+- Use your phone to test the mobile version of your site. A real device will always be better than using an emulator or devtools to do mobile testing
+- Test advanced HTTPs only features such as Web Notifications and PWA's locally
+- Cross device testing with real devices. Hop on another computer or device running the same or a different OS, then hit the public URL Tunnelmole generated for you
+- Share it with anyone over the internet such as a friend, colleague or client to show off your work
+
 ### Installation
 If you want to start using Tunnelmole right away without building it from source, the easiest method is to install the pre-built binary for your platform.
 
