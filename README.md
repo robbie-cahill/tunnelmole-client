@@ -82,6 +82,8 @@ You can also invoke the compiled client manually with
 `node dist/src/index.js <port number to forward to>`.
 
 #### Debugging
+This project has sourcemaps enabled, so you can set breakpoints in the TypeScript `.ts` files and they should behave normally.
+
 To set up debugging for Visual Studio Code, copy over the example config.
 ```
 cp .vscode/launch.json.example .vscode/launch.json
