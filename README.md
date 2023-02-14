@@ -10,7 +10,7 @@ So, you could have your application running locally on port `8080`, then by runn
 
 Tunnelmole has been compared to a similar tool known as `ngrok`, but is open source.
 
-If you are using the default configuration you will a get HTTPs URL and all of its benefits for free. HTTPs URLs are required for some modern features like web notifications and PWA's.
+If you are using the default configuration you will a get HTTPs URL and all of its benefits for free. Modern browsers require HTTPs for some newer features like web notifications and PWA's.
 
 ### Installation
 If you want to start using Tunnelmole right away without building it from source, the easiest method is to install the pre-built binary for your platform.
