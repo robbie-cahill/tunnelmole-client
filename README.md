@@ -76,7 +76,7 @@ Now run `npm start`.
 This does a couple of things for you automatically:
 - First, the code will compile automatically
 - Tunnelmole will then start
-- Every time you make changes, the code will recompile and Tunnelmole will automatically restart. This saves you time as you won't need to manually recompile and restart the server yourself
+- Every time you make changes, the code will recompile and Tunnelmole will automatically restart. This saves you time as you won't need to manually recompile and restart the server yourself. This feature is also known as Hot Reload.
 
 You can also invoke the compiled client manually with
 `node dist/src/index.js <port number to forward to>`.
