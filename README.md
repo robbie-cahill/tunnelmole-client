@@ -74,7 +74,7 @@ The default settings are fine unless you want to self host your own [tunnelmole 
 Now run `npm start`. 
 
 This does a few things for you automatically:
-- First, the code will compile automatically
+- First, the code will compile
 - Tunnelmole will then start
 - Every time you make changes, the code will recompile and Tunnelmole will automatically restart. This saves you time as you won't need to manually recompile and restart the server yourself. This feature is also known as Hot Reload.
 
