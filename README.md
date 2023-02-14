@@ -74,7 +74,7 @@ The default settings are fine unless you want to self host your own [tunnelmole 
 Run `npm run build`. If you want live recompilation every time you make a change run `npm run watch`.
 
 #### Run Tunnelmole
-Now run `npm start`. This uses `nodemon` which will automatically restart `tmole` every time the compiled JavaScript is updated. You can get hot reload if you combine this with `npm run watch`.
+Now run `npm start`. This uses `nodemon` which will automatically restart Tunnelmole every time the compiled JavaScript is updated. You can get hot reload if you combine this with `npm run watch`.
 
 You can also invoke the compiled client manually with
 `node dist/src/index.js <port number to forward to>`
@@ -94,6 +94,8 @@ Responses are handled in reverse. Your client forwards them to the Tunnelmole se
 There is no big company behind Tunnelmole and currently there is only one maintainer so any help is greatly appreciated!.
 
 If you'd like a bug fixed or missing feature added, the fastest way to make that happen is to implement the changes yourself!.
+
+This repo has a few features to help with your developer experience including sample debugging configuration and hot reload.
 
 Here are some different ways you can help
 - Help with testing Tunnelmole. Install the latest binary or build the latest source release and do your best to break it. If you're able to, create an issue.
