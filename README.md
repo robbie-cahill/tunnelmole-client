@@ -93,7 +93,7 @@ Responses are handled in reverse. Your client forwards them to the Tunnelmole se
 ### Contributing
 There is no big company behind Tunnelmole and currently there is only one maintainer so any help is greatly appreciated!.
 
-If you'd like a bug fixed or missing feature added, the fastest way to make that happen is to implement the changes yourself!.
+If you'd like a bug fixed or missing feature added, the fastest way to make that happen is to implement the changes yourself.
 
 This repo has a few features to help with your developer experience including sample debugging configuration and hot reload.
 
