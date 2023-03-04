@@ -136,7 +136,7 @@ We welcome issue reports and PRs from the community.
 
 Feel free to look over the code and see exactly what Tunnelmole is doing before running it.
 
-You will always be able to run and modify the Tunnelmole client and service free of charge forever provided you comply with the terms of the GNU Affero General Public License, version 3.
+The Tunnelmole client is licensed under the MIT license. The service is licensed under the Gnu Affero General Public License, version 3.
 
 #### Does Tunnemole hide my IP?
 In the past the Tunnelmole service did hide IP addresses. Unfortunately this encouraged bad actors to use the service. They would tunnel phishing sites through the service, then the abuse reports would get sent to my hosting provider instead of theirs.
