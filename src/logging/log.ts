@@ -1,9 +1,11 @@
-import config from "../../config";
+import { program } from "..";
+
 
 export default async function log(message: string, level : 'info'|'warning'|'error' = 'info') {
+    program
     switch (level) {
         case 'info':
-            if (config.runtime.debug) {
+            if (program.debug) {
                 console.info(message);
             }
             break;
