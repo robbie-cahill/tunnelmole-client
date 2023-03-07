@@ -5,7 +5,7 @@ import { initialiseClientId } from './identity/client-id-service';
 import { initStorage } from './node-persist/storage';
 import dispatchCommand from './dispatch-command';
 
-const VERSION = '1.0.1';
+const VERSION = '1.0.2';
 
 async function run()
 {

@@ -86,4 +86,10 @@ export default async function tmoleServer(command : Command)
         log(Date.now() + " Received " + message.type + " message:", "info");
         log(message, 'info');
     });
+
+    // Log errors
+    websocket.on('error', (error) => {
+        log(Date.now() + "Caught an error:", "error");
+        console.error(error);
+    });
 }
