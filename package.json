@@ -1,7 +1,7 @@
 {
-  "name": "tmole-client",
+  "name": "tunnelmole",
   "version": "0.0.1",
-  "description": "Tmole Client",
+  "description": "Tunnelmole Client",
   "main": "index.js",
   "scripts": {
     "build": "tsc -p ./",
