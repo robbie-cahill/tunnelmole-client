@@ -8,7 +8,7 @@
     "watch": "tsc -p ./ -w",
     "start": "npm run watch & nodemon dist/src/tunnelmole.js 3000"
   },
-  "bin": "dist/src/index.js",
+  "bin": "dist/bin/tunnelmole.js",
   "author": "Robbie Cahill",
   "license": "MIT",
   "dependencies": {
