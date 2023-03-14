@@ -16,7 +16,8 @@
     "start": "npm run watch & nodemon dist/src/tunnelmole.js 3000"
   },
   "bin": {
-    "tmole": "dist/bin/tunnelmole.js"    
+    "tmole": "dist/bin/tunnelmole.js",
+    "tunnelmole": "dist/bin/tunnelmole.js" 
   },
   "author": "Robbie Cahill",
   "license": "MIT",
