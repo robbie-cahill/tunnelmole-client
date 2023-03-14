@@ -1,6 +1,6 @@
 import { Command } from "commander";
-import exposeServer from "./expose-server";
-import { setApiKey } from "./identity/api-key-service";
+import exposeServer from "../expose-server";
+import { setApiKey } from "../identity/api-key-service";
 
 const isNumber = require("is-number");
 

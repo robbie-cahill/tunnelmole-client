@@ -3,7 +3,7 @@ require('source-map-support').install();
 import program from 'commander';
 import { initialiseClientId } from './identity/client-id-service';
 import { initStorage } from './node-persist/storage';
-import dispatchCommand from './dispatch-command';
+import dispatchCommand from './cli/dispatch-command';
 
 const VERSION = '1.0.2';
 
