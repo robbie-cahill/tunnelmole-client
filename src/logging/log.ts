@@ -1,10 +1,7 @@
-import { program } from "../../bin/tunnelmole";
-
-
 export default async function log(message: string, level : 'info'|'warning'|'error' = 'info') {
     switch (level) {
         case 'info':
-            if (program.debug) {
+            if (process.env.TUNNELMOLE_DEBUG === '1') {
                 console.info(message);
             }
             break;

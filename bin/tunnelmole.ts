@@ -34,7 +34,6 @@ More detailed instructions, cookbooks and more are available at https://tmole.sh
         .version(VERSION)
         .arguments('[arg0]')
         .option('--set-api-key <apiKey>', 'Set your API key. After purchasing a subscription you can copy and paste the command shown on the page')
-        .option('--debug')
         .description('tmole - Share your local server with a Public URL')
         .action(dispatchCommand);
 
@@ -44,5 +43,3 @@ More detailed instructions, cookbooks and more are available at https://tmole.sh
 (async function() {
     await run();
 })();
-
-export { program }
