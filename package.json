@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc -p ./",
     "watch": "tsc -p ./ -w",
-    "start": "npm run watch & nodemon dist/src/index.js 3000"
+    "start": "npm run watch & nodemon dist/src/tunnelmole.js 3000"
   },
   "bin": "dist/src/index.js",
   "author": "",
