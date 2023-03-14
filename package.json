@@ -2,7 +2,10 @@
   "name": "tunnelmole",
   "version": "0.0.1",
   "description": "Tunnelmole Client",
-  "main": "index.js",
+  "main": "dist/src/index.js",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/robbie-cahill/tunnelmole-client.git"
