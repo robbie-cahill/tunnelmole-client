@@ -9,7 +9,7 @@
     "start": "npm run watch & nodemon dist/src/tunnelmole.js 3000"
   },
   "bin": "dist/src/index.js",
-  "author": "",
+  "author": "Robbie Cahill",
   "license": "MIT",
   "dependencies": {
     "@types/commander": "^2.12.2",
