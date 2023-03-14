@@ -1,4 +1,3 @@
-import { Command } from 'commander';
 import config from '../config';
 import HostipWebSocket from './websocket/host-ip-websocket';
 import InitialiseMessage from './messages/initialise-message';
@@ -8,8 +7,9 @@ import log from './logging/log';
 import { getClientId } from './identity/client-id-service';
 import { getApiKey } from './identity/api-key-service';
 import validator from 'validator';
+import { Options } from './options';
 
-export default async function tmoleServer(command : Command)
+export default async function tunnelmoleServer(options : Options)
 {
     const websocket = new HostipWebSocket(config.hostip.endpoint);
     const websocketIsReady = websocket.readyState === 1;
@@ -29,27 +29,21 @@ export default async function tmoleServer(command : Command)
         }
 
         // Handle passed subdomain param if present
-        const AS = command.args[1] || undefined; // uppercase variable name to stop conflict with JavaScript reserved word "as"
-        let domain = command.args[2] || undefined;
+        let domain = options.domain ?? undefined;
         if (typeof domain === 'string') {
+            // Remove protocols in case they were passed by mistake as the "domain"
             domain = domain.replace('http://', '');
             domain = domain.replace('https://', '');
 
             if (!validator.isURL(domain)) {
-                console.info("Invalid domain name passed, please enter the format mydomain.tmole.sh");
+                console.info("Invalid domain name passed, please use the format mydomain.tunnelmole.com");
                 return Promise.resolve();
             }
 
             const domainParts = domain.split('.');
             const subdomain = domainParts[0];
 
-            if (AS === 'as' && !domain) {
-                console.info('Please enter your desired domain e.g. "hostip tmole 80 as myapp.hostip.dev"');
-            }
-
-            if (AS === 'as' && domain) {
-                initialiseMessage.subdomain = subdomain;
-            }
+            initialiseMessage.subdomain = subdomain;
         }
 
         websocket.sendMessage(initialiseMessage);
@@ -77,7 +71,7 @@ export default async function tmoleServer(command : Command)
 
         const handler = messageHandlers[message.type];
 
-        handler(message, websocket, command);
+        handler(message, websocket, options);
     });
 
     // Log messages if debug is enabled

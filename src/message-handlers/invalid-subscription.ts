@@ -1,8 +1,9 @@
 import HostipWebSocket from "../websocket/host-ip-websocket";
 import { Command } from "commander";
 import InvalidSubscriptionMessage from "../messages/invalid-subscription-message";
+import { Options } from "../options";
 
-export default function invalidSubscription(message: InvalidSubscriptionMessage, websocket: HostipWebSocket, command: Command): void {
+export default function invalidSubscription(message: InvalidSubscriptionMessage, websocket: HostipWebSocket, options: Options): void {
     if (typeof message.apiKey === 'string') {
         console.info(
             'You have requested a custom subdomain but have set the invalid api key ' + message.apiKey + '.\n\n' +

@@ -1,5 +1,8 @@
 import HostipWebSocket from "../websocket/host-ip-websocket";
-import { Command } from "commander";
+import { Options } from "../options";
 
-export default async function genericMessageHandler(message: any, websocket: HostipWebSocket, command: Command) {
+/**
+ * An example message handler to copy, paste and refactor rename
+ */
+export default async function genericMessageHandler(message: any, websocket: HostipWebSocket, options: Options) {
 }

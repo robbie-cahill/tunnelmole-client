@@ -5,13 +5,14 @@ import { Command } from "commander";
 import ForwardedResponseMessage from "../messages/forwarded-response-message";
 import { forwardedResponse } from "../messages/types";
 import log from "../logging/log";
+import { Options } from "../options";
 
-export default async function forwardedRequest(forwardedRequestMessage: ForwardedRequestMessage, websocket: HostipWebSocket, command : Command) {
-    const port = Number.parseInt(command.args[0]);
+export default async function forwardedRequest(forwardedRequestMessage: ForwardedRequestMessage, websocket: HostipWebSocket, options : Options) {
+    const port = options.port;
     const { requestId, url, headers } = forwardedRequestMessage;
 
     // @todo: Once GET is working, add support for all HTTP methods
-    const options : http.RequestOptions = {
+    const requestOptions : http.RequestOptions = {
         hostname: 'localhost',
         method: forwardedRequestMessage.method,
         port: port,
@@ -19,7 +20,7 @@ export default async function forwardedRequest(forwardedRequestMessage: Forwarde
         headers
     };
 
-    const request = http.request(options, (response : http.IncomingMessage) => {
+    const request = http.request(requestOptions, (response : http.IncomingMessage) => {
         let responseBody : Buffer;
         response.on('data', (chunk: Buffer) => {
             if (typeof responseBody === 'undefined') {
