@@ -10,7 +10,7 @@
   },
   "bin": "dist/src/index.js",
   "author": "",
-  "license": "AGPL-3.0-or-later",
+  "license": "MIT",
   "dependencies": {
     "@types/commander": "^2.12.2",
     "@types/deep-equal": "^1.0.1",
