@@ -1,7 +1,7 @@
 import { Command } from "commander";
-import tunnelmole from "../tunnelmole";
-import { setApiKey } from "../identity/api-key-service";
-import { Options } from "../options";
+import tunnelmole from "../tunnelmole.js";
+import { setApiKey } from "../identity/api-key-service.js";
+import { Options } from "../options.js";
 
 const isNumber = require("is-number");
 

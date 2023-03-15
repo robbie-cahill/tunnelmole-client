@@ -1,11 +1,10 @@
-import HostipWebSocket from "../websocket/host-ip-websocket";
-import ForwardedRequestMessage from "../messages/forwarded-request-message";
+import HostipWebSocket from "../websocket/host-ip-websocket.js"
+import ForwardedRequestMessage from "../messages/forwarded-request-message.js"
 import http from 'http';
-import { Command } from "commander";
-import ForwardedResponseMessage from "../messages/forwarded-response-message";
-import { forwardedResponse } from "../messages/types";
-import log from "../logging/log";
-import { Options } from "../options";
+import ForwardedResponseMessage from "../messages/forwarded-response-message.js"
+import { forwardedResponse } from "../messages/types.js"
+import log from "../logging/log.js"
+import { Options } from "../options.js";
 
 export default async function forwardedRequest(forwardedRequestMessage: ForwardedRequestMessage, websocket: HostipWebSocket, options : Options) {
     const port = options.port;

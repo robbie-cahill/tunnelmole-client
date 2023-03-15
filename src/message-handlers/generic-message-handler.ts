@@ -1,5 +1,5 @@
-import HostipWebSocket from "../websocket/host-ip-websocket";
-import { Options } from "../options";
+import HostipWebSocket from "../websocket/host-ip-websocket.js";
+import { Options } from "../options.js";
 
 /**
  * An example message handler to copy, paste and refactor rename

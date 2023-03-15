@@ -1,4 +1,4 @@
-import { storage } from "../node-persist/storage"
+import { storage } from "../node-persist/storage.js"
 
 const API_KEY = 'apiKey';
 

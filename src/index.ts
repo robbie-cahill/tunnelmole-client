@@ -1,4 +1,4 @@
-import tunnelmole from "./tunnelmole";
+import tunnelmole from "./tunnelmole.js";
 
 export {
     tunnelmole 
