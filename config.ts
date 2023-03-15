@@ -3,12 +3,12 @@ const deepmerge = require("deepmerge");
 
 const baseConfig = {
     hostip: {
-        domain: "service.tunnelmole.com",
+        endpoint: "service.tunnelmole.com",
         port: "80"
     },
     runtime: {
-        debug: true
-    }
+        enableLogging: true
+    }    
 }
 
 
