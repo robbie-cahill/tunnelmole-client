@@ -9,7 +9,7 @@ import { getApiKey } from './identity/api-key-service';
 import validator from 'validator';
 import { Options } from './options';
 
-export default async function tunnelmoleServer(options : Options)
+export default async function tunnelmole(options : Options)
 {
     const websocket = new HostipWebSocket(config.hostip.endpoint);
     const websocketIsReady = websocket.readyState === 1;

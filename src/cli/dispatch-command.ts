@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import tunnelmoleServer from "../tunnelmole-server";
+import tunnelmole from "../tunnelmole";
 import { setApiKey } from "../identity/api-key-service";
 import { Options } from "../options";
 
@@ -22,7 +22,7 @@ export default async function dispatchCommand(arg0 : any, command : Command) {
     } 
 
     if (options.port) {
-        tunnelmoleServer(options);
+        tunnelmole(options);
         return;
     }
     

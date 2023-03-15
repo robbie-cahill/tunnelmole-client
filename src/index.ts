@@ -1,5 +1,5 @@
-import tunnelmoleServer from "./tunnelmole-server";
+import tunnelmole from "./tunnelmole";
 
 export {
-    tunnelmoleServer
+    tunnelmole as tunnelmoleServer
 }
