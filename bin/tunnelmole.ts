@@ -1,5 +1,9 @@
 #!/usr/bin/env node
-require('source-map-support').install();
+
+// sourceMapSupport makes TypeScript line numbers show up in stack traces, making debugging much easier
+import sourceMapSupport from 'source-map-support';
+sourceMapSupport.install();
+
 import program from 'commander';
 import { initialiseClientId } from '../src/identity/client-id-service.js';
 import { initStorage } from '../src/node-persist/storage.js';

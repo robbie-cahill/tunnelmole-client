@@ -1,5 +1,5 @@
 import instanceConfig from "./config-instance.js";
-const deepmerge = require("deepmerge");
+import deepmerge from 'deepmerge';
 
 const baseConfig = {
     hostip: {

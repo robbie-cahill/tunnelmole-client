@@ -2,8 +2,7 @@ import { Command } from "commander";
 import tunnelmole from "../tunnelmole.js";
 import { setApiKey } from "../identity/api-key-service.js";
 import { Options } from "../options.js";
-
-const isNumber = require("is-number");
+import isNumber from 'is-number';
 
 export default async function dispatchCommand(arg0 : any, command : Command) {
     const options : Options = {};
