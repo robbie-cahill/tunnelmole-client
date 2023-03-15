@@ -21,7 +21,7 @@ Heres what you could do with your new public URL
 - Share it with anyone over the internet such as a friend, colleague or client to show off your work
 
 ### Installation
-If you want to start using Tunnelmole right away without building it from source, the easiest method is to install the pre-built binary for your platform.
+If you want to start using Tunnelmole right away without building it from source, the easiest method is to install the pre-built binary for your platform. Alternatively, 
 
 #### Linux
 Copy and paste the following into a terminal
@@ -38,11 +38,12 @@ Copy and paste the following into a terminal
 #### Windows
 We recommend installing with NPM on Windows as it sets up `.cmd` files that will allow you to run `tmole` from any folder on the command line or Powershell.
 
-Download the `exe` file for Windows [here](https://tunnelmole.com/downloads/tmole.exe) and put it somewhere in your PATH.
+Alternatively, download the `exe` file for Windows [here](https://tunnelmole.com/downloads/tmole.exe) and put it somewhere in your PATH.
 
 
 #### Install with NPM
-To install Tunnelmole with NPM run
+To install Tunnelmole with NPM you need to have NodeJS installed. If not, get it from (https://nodejs.org/).
+
 `npm install -g tunnelmole`
 
 If you're good with Powershell, feel free to come up with an easier copy/paste install method and send in a PR!.
