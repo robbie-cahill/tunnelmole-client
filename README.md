@@ -36,7 +36,14 @@ Copy and paste the following into a terminal
 ```
 
 #### Windows
+We recommend installing with NPM on Windows as it sets up `.cmd` files that will allow you to run `tmole` from any folder on the command line or Powershell.
+
 Download the `exe` file for Windows [here](https://tunnelmole.com/downloads/tmole.exe) and put it somewhere in your PATH.
+
+
+#### Install with NPM
+To install Tunnelmole with NPM run
+`npm install -g tunnelmole`
 
 If you're good with Powershell, feel free to come up with an easier copy/paste install method and send in a PR!.
 
