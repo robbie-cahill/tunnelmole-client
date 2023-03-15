@@ -1,6 +1,6 @@
-import HostipWebSocket from "../websocket/host-ip-websocket.js";
-import InvalidSubscriptionMessage from "../messages/invalid-subscription-message.js";
-import { Options } from "../options.js";
+import HostipWebSocket from "../websocket/host-ip-websocket";
+import InvalidSubscriptionMessage from "../messages/invalid-subscription-message";
+import { Options } from "../options";
 
 export default function invalidSubscription(message: InvalidSubscriptionMessage, websocket: HostipWebSocket, options: Options): void {
     if (typeof message.apiKey === 'string') {

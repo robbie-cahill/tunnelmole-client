@@ -1,7 +1,7 @@
-import hostnameAssigned from "./src/message-handlers/hostname-assigned.js";
-import forwardedRequest from "./src/message-handlers/forwarded-request.js";
-import hostnameAlreadyTaken from "./src/message-handlers/hostname-already-taken.js";
-import invalidSubscription from "./src/message-handlers/invalid-subscription.js";
+import hostnameAssigned from "./src/message-handlers/hostname-assigned";
+import forwardedRequest from "./src/message-handlers/forwarded-request";
+import hostnameAlreadyTaken from "./src/message-handlers/hostname-already-taken";
+import invalidSubscription from "./src/message-handlers/invalid-subscription";
 
 /**
  * Websocket message handlers for different message types

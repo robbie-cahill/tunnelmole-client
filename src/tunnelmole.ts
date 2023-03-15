@@ -1,13 +1,13 @@
-import config from '../config.js';
-import HostipWebSocket from './websocket/host-ip-websocket.js';
-import InitialiseMessage from './messages/initialise-message.js';
-import { initialise } from './messages/types.js';
-import { messageHandlers } from '../message-handlers.js';
-import log from './logging/log.js';
-import { getClientId } from './identity/client-id-service.js';
-import { getApiKey } from './identity/api-key-service.js';
-import { Options } from './options.js';
+import config from '../config';
+import HostipWebSocket from './websocket/host-ip-websocket';
+import InitialiseMessage from './messages/initialise-message';
+import { initialise } from './messages/types';
+import { messageHandlers } from '../message-handlers';
+import log from './logging/log';
+import { getClientId } from './identity/client-id-service';
+import { getApiKey } from './identity/api-key-service';
 import validator from 'validator';
+import { Options } from './options';
 
 export default async function tunnelmole(options : Options)
 {

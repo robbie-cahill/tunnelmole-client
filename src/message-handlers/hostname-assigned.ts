@@ -1,6 +1,6 @@
-import HostnameAssignedMessage from '../messages/hostname-assigned-message.js';
-import HostipWebSocket from '../websocket/host-ip-websocket.js';
-import { Options } from '../options.js';
+import HostnameAssignedMessage from '../messages/hostname-assigned-message';
+import HostipWebSocket from '../websocket/host-ip-websocket';
+import { Options } from '../options';
 
 export default async function hostnameAssigned(message: HostnameAssignedMessage, websocket: HostipWebSocket, options: Options) {
     const port = options.port;
