@@ -1,5 +1,4 @@
 import HostipWebSocket from "../websocket/host-ip-websocket";
-import { Command } from "commander";
 import InvalidSubscriptionMessage from "../messages/invalid-subscription-message";
 import { Options } from "../options";
 
