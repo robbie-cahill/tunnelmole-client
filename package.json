@@ -4,7 +4,8 @@
   "description": "Tunnelmole Client",
   "main": "dist/src/index.js",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "repository": {
     "type": "git",
