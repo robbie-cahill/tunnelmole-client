@@ -1,4 +1,4 @@
-import instanceConfig from "./config-instance";
+import instanceConfig from "./config-instance.js";
 const deepmerge = require("deepmerge");
 
 const baseConfig = {

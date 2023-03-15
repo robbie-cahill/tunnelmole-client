@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { storage } from '../node-persist/storage';
+import { storage } from '../node-persist/storage.js';
 
 const initialiseClientId = async () : Promise<void> => {
     // @todo Check for an existing client id before overwriting it with a new one

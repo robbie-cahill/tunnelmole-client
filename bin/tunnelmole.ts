@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 require('source-map-support').install();
 import program from 'commander';
-import { initialiseClientId } from '../src/identity/client-id-service';
-import { initStorage } from '../src/node-persist/storage';
-import dispatchCommand from '../src/cli/dispatch-command';
+import { initialiseClientId } from '../src/identity/client-id-service.js';
+import { initStorage } from '../src/node-persist/storage.js';
+import dispatchCommand from '../src/cli/dispatch-command.js';
 
 const VERSION = '1.0.2';
 
