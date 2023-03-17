@@ -9,7 +9,7 @@ import { initialiseClientId } from '../src/identity/client-id-service.js';
 import { initStorage } from '../src/node-persist/storage.js';
 import dispatchCommand from '../src/cli/dispatch-command.js';
 
-const VERSION = '1.0.2';
+const VERSION = '2.0.0';
 
 async function run()
 {
