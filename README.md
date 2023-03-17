@@ -87,7 +87,7 @@ tunnelmole({
 
 Tunnelmole will start in the background and you'll see output in the console log similar to the command line application. The function is `async` and won't block execution of the rest of your code.
 
-If you want to use a custom subdomain, you could also pass the domain
+If you want to use a custom subdomain, you could also pass the domain as an option.
 ```
 tunnelmole({
     port: 3000,
