@@ -46,8 +46,6 @@ To install Tunnelmole with NPM you need to have NodeJS installed. If not, get it
 
 `npm install -g tunnelmole`
 
-If you're good with Powershell, feel free to come up with an easier copy/paste install method and send in a PR!.
-
 #### Using Tunnelmole
 - Start your web application locally and note down the port number its listening on
 - Run `tmole <port number>`, replacing `<port number>` with your applications port number. For example, if your application listens on port `8080`, run `tmole 8080`.
