@@ -87,7 +87,7 @@ tunnelmole({
 });
 ```
 
-Tunnelmole will start in the background and you'll see output in the console log similar to the command line application. The function is `async` and won't block execution of the rest of your code.
+Tunnelmole will start in the background and you'll see output in the console log similar to the Tunnelmole command line application which will include the public URLs that now point to your application. The function is `async` and won't block execution of the rest of your code.
 
 If you want to use a custom subdomain, you could also pass the domain as an option.
 ```
@@ -105,7 +105,7 @@ node_modules/.bin/tunnelmole
 
 They both work identically to the Tunnelmole command line application.
 
-You can run them manually in the same way as the command line application (for example `node_modules/.bin/tmole 3000`), but its far more convenient to integrate them with NPM scripts in `package.json`. This way, you can automate starting your application and generating a public URL with a single command. For example:
+You can run them manually in the same way as the command line application (for example `node node_modules/.bin/tmole 3000`), but its far more convenient to integrate them with NPM scripts in `package.json`. This way, you can automate starting your application and generating a public URL with a single command. For example:
 ```
 {
     "name": "myapp",
@@ -117,7 +117,7 @@ You can run them manually in the same way as the command line application (for e
 }
 ```
 
-In this example, `npm run start-public` will simultaneously start your application and get tunnelmole to generate public URLs tunneling port 3000. Replace port 3000 with the port your application listens on if it is different.
+In this example, `npm run start-public` will simultaneously start your application and get tunnelmole to generate public URLs tunneling to port 3000. Replace port 3000 with the port your application listens on if it is different. You will see the public URLs in the command line output.
 
 This allows you to start your application and get a public URL with a single command, instead of needing to run two commands in separate terminals.
 
