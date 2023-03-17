@@ -21,7 +21,9 @@ Heres what you could do with your new public URL
 - Share it with anyone over the internet such as a friend, colleague or client to show off your work
 
 ### Installing Tunnelmole
-If you want to start using Tunnelmole right away without building it from source, the easiest method is to install the pre-built binary for your platform. Alternatively, 
+If you want to start using Tunnelmole right away without building it from source or installing anything else, the easiest method is to install the pre-built binary for your platform as these have no external dependencies.
+
+If you have NodeJS installed, you can also install with NPM (`npm install -g tunnelmole`).
 
 #### Linux
 Copy and paste the following into a terminal
