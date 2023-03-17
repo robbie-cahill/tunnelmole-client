@@ -71,7 +71,7 @@ First install the dependency:
 npm install --save tunnelmole
 ```
 
-Then in your code you can import tunnelmole:
+Then in your code you can import the `tunnelmole` ES module.
 
 ```
 import { tunnelmole } from 'tunnelmole';
