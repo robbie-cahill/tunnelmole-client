@@ -10,9 +10,11 @@
         "noImplicitAny": true,
         "suppressImplicitAnyIndexErrors": true,
         "esModuleInterop": true,
-        "outDir": "dist"
+        "outDir": "dist",
+        "declaration": true
     },
     "exclude": [
-        "packages"
+        "node_modules",
+        "dist"
     ]
 }
