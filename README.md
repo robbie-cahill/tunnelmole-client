@@ -63,7 +63,7 @@ You can also use another device, for example try hitting one of the URLs with yo
 
 The URLs are public - this means you can also share them with collaborators and others over the internet.
 
-#### Integrating with NodeJS and TypeScript projects with NPM
+### Integrating with NodeJS and TypeScript projects with NPM
 Tunnelmole is available as an NPM dependency for integration with NodeJS and TypeScript projects
 
 First install the dependency:
