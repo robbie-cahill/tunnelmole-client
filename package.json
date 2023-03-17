@@ -1,6 +1,6 @@
 {
   "name": "tunnelmole",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Tunnelmole Client",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
