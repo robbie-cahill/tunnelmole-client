@@ -66,25 +66,26 @@ The URLs are public - this means you can also share them with collaborators and 
 ### Integrating with NodeJS and TypeScript projects with NPM
 Tunnelmole is available as an NPM dependency for integration with NodeJS and TypeScript projects.
 
-First install the dependency:
+#### Install as an npm dependency
+To integrate tunnelmole with your project you first need to install it as an NPM dependency.
 ```
 npm install --save tunnelmole
 ```
 
-Then in your code you can import the `tunnelmole` ES module.
-
+#### Starting tunnelmole using code
+First import the `tunnelmole` ES module.
 ```
 import { tunnelmole } from 'tunnelmole';
 ```
 
-Once imported you can run tunnelmole with the code below, changing port 3000 to the port your application listens on if it is different.
+Once imported you can start tunnelmole with the code below, changing port 3000 to the port your application listens on if it is different.
 ```
 tunnelmole({
     port: 3000
 });
 ```
 
-Tunnelmole will start in the background and you'll see output in the console similar to the command line application. The function is `async` and won't block execution of the rest of your code.
+Tunnelmole will start in the background and you'll see output in the console log similar to the command line application. The function is `async` and won't block execution of the rest of your code.
 
 If you want to use a custom subdomain, you could also pass the domain
 ```
@@ -93,6 +94,31 @@ tunnelmole({
     domain: '<your tunnelmole domain e.g. mysite.tunnelmole.com>'
 });
 ```
+#### Using Tunnelmole with NPM scripts
+Installing Tunnelmole as an NPM dependency will make the following executables available in your project:
+```
+node_modules/.bin/tmole
+node_modules/.bin/tunnelmole
+```
+
+They both work identically to the Tunnelmole command line application.
+
+You can run them manually in the same way as the command line application (for example `node_modules/.bin/tmole 3000`), but its far more convenient to integrate them with NPM scripts in `package.json` to automate starting your application and generating a public URL with a single command. For example:
+```
+{
+    "name": "myapp",
+    "version": 0.0.1
+    "scripts": {
+        "start": "dist/index.js",
+        "start-public": "npm run start && tmole 3000"
+    }
+}
+```
+
+In this example, `npm run start-public` will simultaneously start your application and get tunnelmole to generate public URLs tunneling port 3000. Replace port 3000 with the port your application listens on if it is different.
+
+This allows you to start your application and get a public URL with a single command, instead of needing to run two commands in separate terminals.
+
 ### Building from source
 #### Prerequisites
 - TypeScript 4.4 or later
