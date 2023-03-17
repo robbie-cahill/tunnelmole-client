@@ -10,8 +10,6 @@ export default async function dispatchCommand(arg0 : any, command : Command) {
     // Handle argument actions e.g. "tmole <port>" or "tmole serve"
     if (isNumber(arg0)) {
         options.port = parseInt(arg0);
-    } else {
-        console.error('Please specify a number as the port, you passed in ' + arg0);
     }
     
     if (typeof command.args[1] === 'string' && command.args[1].toLowerCase() === 'as' && typeof command.args[2] === 'string') {
@@ -20,12 +18,13 @@ export default async function dispatchCommand(arg0 : any, command : Command) {
         console.info("Please enter the domain you want to expose e.g. foo.tunnelmole.com");
     } 
 
+    // Port passed, launch the tunnelmole client
     if (options.port) {
         tunnelmole(options);
         return;
     }
     
-    // Handle options like --set-api-key
+    // Set the API key if an API key is passed in
     const apiKey = command.setApiKey || undefined;
     if (typeof apiKey === 'string') {
         await setApiKey(apiKey);
