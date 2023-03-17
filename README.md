@@ -103,7 +103,7 @@ node_modules/.bin/tunnelmole
 
 They both work identically to the Tunnelmole command line application.
 
-You can run them manually in the same way as the command line application (for example `node_modules/.bin/tmole 3000`), but its far more convenient to integrate them with NPM scripts in `package.json` to automate starting your application and generating a public URL with a single command. For example:
+You can run them manually in the same way as the command line application (for example `node_modules/.bin/tmole 3000`), but its far more convenient to integrate them with NPM scripts in `package.json`. This way, you can automate starting your application and generating a public URL with a single command. For example:
 ```
 {
     "name": "myapp",
