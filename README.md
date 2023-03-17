@@ -20,7 +20,7 @@ Heres what you could do with your new public URL
 - Cross device testing with real devices. Hop on another computer or device running the same or a different OS, then hit the public URL Tunnelmole generated for you
 - Share it with anyone over the internet such as a friend, colleague or client to show off your work
 
-### Installation
+### Installing Tunnelmole
 If you want to start using Tunnelmole right away without building it from source, the easiest method is to install the pre-built binary for your platform. Alternatively, 
 
 #### Linux
@@ -63,6 +63,36 @@ You can also use another device, for example try hitting one of the URLs with yo
 
 The URLs are public - this means you can also share them with collaborators and others over the internet.
 
+#### Integrating with NodeJS and TypeScript projects with NPM
+Tunnelmole is available as an NPM dependency for integration with NodeJS and TypeScript projects
+
+First install the dependency:
+```
+npm install --save tunnelmole
+```
+
+Then in your code you can import tunnelmole:
+
+```
+import { tunnelmole } from 'tunnelmole';
+```
+
+Once imported, invoke tunnelmole with the code below, changing port 3000 to the port your application listens on if it is different.
+```
+tunnelmole({
+    port: 3000
+});
+```
+
+Tunnelmole will start in the background and you'll see output in the console similar to the command line application. The function is `async` and won't block execution of the rest of your code.
+
+If you want to use a custom subdomain, you could also pass the domain
+```
+tunnelmole({
+    port: 3000,
+    domain: '<your tunnelmole domain e.g. mysite.tunnelmole.com>'
+});
+```
 ### Building from source
 #### Prerequisites
 - TypeScript 4.4 or later
