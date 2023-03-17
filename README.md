@@ -23,7 +23,7 @@ Heres what you could do with your new public URL
 ### Installing Tunnelmole
 If you want to start using Tunnelmole right away without building it from source or installing anything else, the easiest method is to install the pre-built binary for your platform as these have no external dependencies.
 
-If you have NodeJS installed, you can also install Tunnelmole with NPM (`npm install -g tunnelmole`).
+If you have NodeJS installed, you can install Tunnelmole with NPM (`npm install -g tunnelmole`).
 
 #### Linux
 Copy and paste the following into a terminal
