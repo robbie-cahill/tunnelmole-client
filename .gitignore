@@ -11,8 +11,6 @@ config-instance.ts
 config-instance.production.ts
 config-instance.local.ts
 *.log
-*.js
-*.js.map
 sslcert
 packages
 /srv
