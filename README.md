@@ -77,7 +77,7 @@ Then in your code you can import tunnelmole:
 import { tunnelmole } from 'tunnelmole';
 ```
 
-Once imported, invoke tunnelmole with the code below, changing port 3000 to the port your application listens on if it is different.
+Once imported you can run tunnelmole with the code below, changing port 3000 to the port your application listens on if it is different.
 ```
 tunnelmole({
     port: 3000
