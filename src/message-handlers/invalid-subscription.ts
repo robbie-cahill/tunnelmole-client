@@ -5,7 +5,7 @@ import { Options } from "../options.js";
 export default function invalidSubscription(message: InvalidSubscriptionMessage, websocket: HostipWebSocket, options: Options): void {
     if (typeof message.apiKey === 'string') {
         console.info(
-            'You have requested a custom subdomain but have set the invalid api key ' + message.apiKey + '.\n\n' +
+            'You have set the invalid api key ' + message.apiKey + '.\n\n' +
             'There is no active subscription associated with this api key, please check your account at https://dashboard.tunnelmole.com\n' +
             'Please set an api key for a valid subscription with "tmole --set-api-key <your_new_api_key>"\n\n' +
             'Falling back to free mode with a random subdomain.\n'

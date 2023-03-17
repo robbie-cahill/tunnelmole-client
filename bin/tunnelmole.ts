@@ -5,17 +5,12 @@ import sourceMapSupport from 'source-map-support';
 sourceMapSupport.install();
 
 import program from 'commander';
-import { initialiseClientId } from '../src/identity/client-id-service.js';
-import { initStorage } from '../src/node-persist/storage.js';
 import dispatchCommand from '../src/cli/dispatch-command.js';
 
 const VERSION = '2.0.2';
 
 async function run()
 {
-    await initStorage();
-    await initialiseClientId();
-
     program
         .name(' ')
         .usage(

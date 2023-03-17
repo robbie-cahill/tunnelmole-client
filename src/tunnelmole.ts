@@ -4,13 +4,22 @@ import InitialiseMessage from './messages/initialise-message.js';
 import { initialise } from './messages/types.js';
 import { messageHandlers } from '../message-handlers.js';
 import log from './logging/log.js';
-import { getClientId } from './identity/client-id-service.js';
-import { getApiKey } from './identity/api-key-service.js';
+import { getClientId, initialiseClientId } from './identity/client-id-service.js';
+import { getApiKey, setApiKey } from './identity/api-key-service.js';
 import { Options } from './options.js';
 import validator from 'validator';
+import { initStorage } from './node-persist/storage.js';
 
 export default async function tunnelmole(options : Options)
 {
+    await initStorage();
+    await initialiseClientId();
+
+    if (options.setApiKey) {
+       await setApiKey(options.setApiKey);
+       return;
+    }
+
     const websocket = new HostipWebSocket(config.hostip.endpoint);
     const websocketIsReady = websocket.readyState === 1;
 

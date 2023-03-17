@@ -2,7 +2,7 @@ interface Options
 {
     port?: number,
     domain?: string,
-    apiKey?: string
+    setApiKey?: string
 }
 
 export { Options };

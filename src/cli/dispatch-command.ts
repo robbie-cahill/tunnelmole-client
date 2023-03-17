@@ -4,10 +4,12 @@ import { setApiKey } from "../identity/api-key-service.js";
 import { Options } from "../options.js";
 import isNumber from 'is-number';
 
+/**
+ * Build Options from the command line input, then pass them off to tunnelmole()
+ */
 export default async function dispatchCommand(arg0 : any, command : Command) {
     const options : Options = {};
 
-    // Handle argument actions e.g. "tmole <port>" or "tmole serve"
     if (isNumber(arg0)) {
         options.port = parseInt(arg0);
     }
@@ -18,16 +20,15 @@ export default async function dispatchCommand(arg0 : any, command : Command) {
         console.info("Please enter the domain you want to expose e.g. foo.tunnelmole.com");
     } 
 
-    // Port passed, launch the tunnelmole client
-    if (options.port) {
-        tunnelmole(options);
-        return;
-    }
-    
     // Set the API key if an API key is passed in
     const apiKey = command.setApiKey || undefined;
     if (typeof apiKey === 'string') {
-        await setApiKey(apiKey);
+        options.setApiKey = command.setApiKey;
+    }
+
+    if (options.port || options.setApiKey) {
+        // We have enough to Launch Tunnelmole
+        tunnelmole(options);
         return;
     }
 
