@@ -75,7 +75,7 @@ npm install --save tunnelmole
 ```
 
 #### Starting tunnelmole using code
-First import `tunnelmole`. You can do this either:
+First import `tunnelmole` using one of the following methods:
 
 As an ES Module with `import`
 ```
