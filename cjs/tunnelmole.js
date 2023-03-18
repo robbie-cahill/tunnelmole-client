@@ -5,7 +5,7 @@
  */
 
 const tunnelmole = async function(options) {
-    const tunnelmole = await import('../../dist/src/index.js');
+    const tunnelmole = await import('../dist/src/index.js');
     tunnelmole.tunnelmole(options);
 };
 
