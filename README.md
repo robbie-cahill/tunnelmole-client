@@ -77,12 +77,12 @@ npm install --save tunnelmole
 #### Starting tunnelmole using code
 First import `tunnelmole`. Both ES and CommonJS modules are supported.
 
-Importing as an ES module
+Importing `tunnelmole` as an ES module
 ```
 import { tunnelmole } from 'tunnelmole';
 ```
 
-Importing CommonJS module
+Importing `tunnelmole` as a CommonJS module
 ```
 const tunnelmole = require('tunnelmole/cjs');
 ```
