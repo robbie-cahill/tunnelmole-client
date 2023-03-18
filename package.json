@@ -1,13 +1,14 @@
 {
   "name": "tunnelmole",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Tunnelmole Client",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "type": "module",
   "files": [
     "dist",
-    "src"
+    "src",
+    "cjs"
   ],
   "repository": {
     "type": "git",
