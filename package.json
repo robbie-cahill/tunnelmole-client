@@ -5,6 +5,17 @@
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "type": "module",
+  "keywords": [
+    "tunnelmole",
+    "tunneling",
+    "proxy",
+    "https",
+    "ssl",
+    "ngrok",
+    "localtunnel",
+    "pgrok",
+    "expose"
+  ],
   "files": [
     "dist",
     "src",
