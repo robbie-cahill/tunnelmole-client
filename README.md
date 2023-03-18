@@ -75,9 +75,19 @@ npm install --save tunnelmole
 ```
 
 #### Starting tunnelmole using code
-First import `tunnelmole` as an ES module.
+First import `tunnelmole`. You can do this either:
+
+As an ES Module with `import`
 ```
 import { tunnelmole } from 'tunnelmole';
+```
+
+As a CommonJS module with `require`
+```
+const tunnelmole = require('tunnelmole/cjs');
+tunnelmole({
+    port: 3000
+})
 ```
 
 Once the module is imported you can start tunnelmole with the code below, changing port 3000 to the port your application listens on if it is different.
