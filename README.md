@@ -38,6 +38,13 @@ https://evgtkh-ip-49-145-166-122.tunnelmole.com is forwarding to localhost:8080
 Now, just go to either one of the URLs shown with your web browser.
 The URLs are public - this means you can also share them with collaborators and others over the internet.
 
+#### Custom subdomain
+Sometimes, it can be useful to have a domain that does not change frequently. To use a custom subdoman run
+`tmole 8080 as <yourdomain>.tunnelmole.com`.
+
+If you are using the hosted service (which is the default) and you want to use a custom subdomain you'll need to purchase a subscription [Learn More](https://dashboard.tunnelmole.com?utm_source=tunnelmoleClientGithub).
+
+Otherwise, you can self host. To learn more go to the [Tunnelmole Service](https://github.com/robbie-cahill/tunnelmole-service/) GitHub repo.
 ### Using Tunnelmole as a library
 
 #### Add the dependency
@@ -75,6 +82,11 @@ tunnelmole({
     domain: '<your tunnelmole domain e.g. mysite.tunnelmole.com>'
 });
 ```
+
+Again if you are using the hosted service (which is the default) and you want to use a custom subdomain you'll need to purchase a subscription [Learn More](https://dashboard.tunnelmole.com?utm_source=tunnelmoleClientGithub).
+
+Otherwise, you can self host. To learn more about this option go to the [Tunnelmole Service](https://github.com/robbie-cahill/tunnelmole-service/) GitHub repo.
+
 #### Using Tunnelmole with NPM scripts
 Installing Tunnelmole as an NPM dependency will make the following executables available in your project:
 ```
@@ -88,7 +100,7 @@ You can run them manually in the same way as the command line application (for e
 ```json
 {
     "name": "myapp",
-    "version": 0.0.1
+    "version": "0.0.1",
     "scripts": {
         "start": "dist/index.js",
         "start-public": "npm run start && tmole 3000"
