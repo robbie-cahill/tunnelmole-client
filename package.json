@@ -1,6 +1,6 @@
 {
   "name": "tunnelmole",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "Tunnelmole, an open source ngrok alternative",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -14,7 +14,10 @@
     "ngrok",
     "localtunnel",
     "pgrok",
-    "expose"
+    "expose",
+    "websocket",
+    "webhook",
+    "testing"
   ],
   "files": [
     "dist",
