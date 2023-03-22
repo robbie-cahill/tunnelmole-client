@@ -6,7 +6,7 @@ export default async function hostnameAssigned(message: HostnameAssignedMessage,
     const port = options.port;
 
     if (typeof port === 'undefined') {
-        console.error('Please specify a port e.g. run "hostip tmole 80"');
+        console.error('Please specify a port e.g. run "tmole 80"');
     }
 
     console.info("http://" + message.hostname + " is forwarding to localhost:" + port);
