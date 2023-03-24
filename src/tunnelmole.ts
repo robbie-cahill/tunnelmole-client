@@ -9,8 +9,9 @@ import { getApiKey, setApiKey } from './identity/api-key-service.js';
 import { Options } from './options.js';
 import validator from 'validator';
 import { initStorage } from './node-persist/storage.js';
+import { eventHandler, URL_ASSIGNED } from './events/event-handler.js';
 
-export default async function tunnelmole(options : Options)
+export default async function tunnelmole(options : Options): Promise<string>
 {
     await initStorage();
     await initialiseClientId();
@@ -94,5 +95,12 @@ export default async function tunnelmole(options : Options)
     websocket.on('error', (error) => {
         log(Date.now() + "Caught an error:", "error");
         console.error(error);
+    });
+
+    // Listen for the URL assigned event and return it
+    return new Promise((resolve, reject) => {
+        eventHandler.on(URL_ASSIGNED, (url: string) => {
+            resolve(url);
+        })
     });
 }
