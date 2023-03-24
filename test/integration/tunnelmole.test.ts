@@ -5,19 +5,22 @@ import { tunnelmole } from "../../src";
 import { URLSearchParams } from "url";
 import { app } from "./test-server/app";
 
-test("Tunnelmole integration tests", async () => {
+describe("Tunnelmole integration tests", () => {
     // Initialise connection
     const port = 3000;
+    let url: string;
 
-    // Start Tunnelmole, the URL will tunnel to `localhost:${port}`
-    const url = await tunnelmole({
-        port
-    });
+    beforeAll(async () => {
+         // Start Tunnelmole, the URL will tunnel to `localhost:${port}`
+        url = await tunnelmole({
+            port
+        });
 
-    // Start the test express app listening on `localhost{$port}` 
-    await new Promise((resolve, reject) => {
-        app.listen(port, () => {
-            resolve(true);            
+         // Start the test express app listening on `localhost{$port}` 
+        await new Promise((resolve, reject) => {
+            app.listen(port, () => {
+                resolve(true);            
+            }); 
         }); 
     })
 
