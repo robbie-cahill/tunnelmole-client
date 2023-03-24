@@ -32,7 +32,7 @@
     "build": "tsc -p ./",
     "watch": "tsc -p ./ -w",
     "start": "npm run watch & nodemon dist/src/tunnelmole.js 3000",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest"
   },
   "bin": {
     "tmole": "dist/bin/tunnelmole.js",
@@ -65,6 +65,8 @@
     "ws": "^7.2.5"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.21.2",
+    "@babel/preset-typescript": "^7.21.0",
     "@types/express": "^4.17.17",
     "@types/multer": "^1.4.7",
     "@types/node": "^18.15.6",
