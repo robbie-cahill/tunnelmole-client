@@ -32,7 +32,7 @@
     "build": "tsc -p ./",
     "watch": "tsc -p ./ -w",
     "start": "npm run watch & nodemon dist/src/tunnelmole.js 3000",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest"
+    "test": "npm run build && node --experimental-vm-modules node_modules/jest/bin/jest --forceExit"
   },
   "bin": {
     "tmole": "dist/bin/tunnelmole.js",
@@ -55,6 +55,7 @@
     "deep-equal": "^2.0.3",
     "deepmerge": "^4.2.2",
     "is-number": "^7.0.0",
+    "multer": "^1.4.5-lts.1",
     "nanoid": "^3.1.5",
     "node-fetch": "^2.6.0",
     "node-localstorage": "^2.1.6",

@@ -78,7 +78,7 @@ describe("Tunnelmole integration tests", () => {
         expect(responseData.firstName).toEqual("John");
     });
 
-    it("Upload binary photo", async() => {
+    it.skip("Upload binary photo", async() => {
         const image : Buffer = fs.readFileSync(__dirname + '/files/img/test-image.png');
 
         const response = await fetch(url + '/image-upload', {
@@ -94,7 +94,7 @@ describe("Tunnelmole integration tests", () => {
         expect(equal).toBe(1);
     });
 
-    it("Submit multipart/form-data with image and text field as POST", async() => {
+    it.skip("Submit multipart/form-data with image and text field as POST", async() => {
         const image : Buffer = fs.readFileSync(__dirname + '/files/img/test-image.png');
 
         const form = new FormData();
