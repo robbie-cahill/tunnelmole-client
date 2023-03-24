@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
+import multer from 'multer';
 
-const multer = require("multer");
 const app = express();
 const port = 3000;
 
