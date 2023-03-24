@@ -45,7 +45,7 @@ Sometimes, it can be useful to have a domain that does not change frequently. To
 If you are using the hosted service (which is the default) and you want to use a custom subdomain you'll need to purchase a subscription [Learn More](https://dashboard.tunnelmole.com?utm_source=tunnelmoleClientNPM).
 
 Otherwise, you can self host. To learn more go to the [Tunnelmole Service](https://github.com/robbie-cahill/tunnelmole-service/) GitHub repo.
-### Using Tunnelmole as a library
+### Using Tunnelmole as a dependency in your code
 
 #### Add the dependency
 Add Tunnelmole as a dependency with
