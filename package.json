@@ -1,6 +1,6 @@
 {
   "name": "tunnelmole",
-  "version": "2.0.26",
+  "version": "2.0.27",
   "description": "Tunnelmole, an open source ngrok alternative. Instant public URLs for any http/https based application. Available as a command line application or as an NPM dependency for your code. Stable and maintained. Good test coverage. Works behind firewalls",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -36,7 +36,7 @@
     "lint": "eslint . --ext .ts",
     "start": "npm run watch & nodemon dist/src/tunnelmole.js 3000",
     "test": "npm run build && node --experimental-vm-modules node_modules/jest/bin/jest --forceExit",
-    "postinstall": "dist/bin/postinstall.js"
+    "postinstall": "node dist/bin/postinstall.js"
   },
   "bin": {
     "tmole": "dist/bin/tunnelmole.js",
