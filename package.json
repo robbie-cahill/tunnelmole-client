@@ -1,7 +1,7 @@
 {
   "name": "tunnelmole",
-  "version": "2.0.19",
-  "description": "Tunnelmole, an open source ngrok alternative. Instant public URLs for any http/https based application. Available as a command line application or as NPM dependency for use in your code. Both are stable. Good test coverage. The client and service are both open source and written in TypeScript",
+  "version": "2.0.20",
+  "description": "Tunnelmole, an open source ngrok alternative. Instant public URLs for any http/https based application. Available as a command line application or as NPM dependency for use in your code. Both are stable. Good test coverage",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "type": "module",
