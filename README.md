@@ -22,7 +22,7 @@ Heres what you could do with your new public URL
 
 ### Installation
 Install Tunnelmole by running
-`npm install -g tunnelmole`
+`sudo npm install -g tunnelmole`
 
 #### Using Tunnelmole
 - Start your web application locally and note down the port number its listening on
