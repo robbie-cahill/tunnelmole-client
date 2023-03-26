@@ -1,6 +1,6 @@
 {
   "name": "tunnelmole",
-  "version": "2.0.16",
+  "version": "2.0.17",
   "description": "Tunnelmole, an open source ngrok alternative",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
