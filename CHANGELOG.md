@@ -1,3 +1,6 @@
+2.0.18
+Introduce CHANGELOG
+
 2.0.17
 Introduce eslint
 
