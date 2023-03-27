@@ -24,6 +24,8 @@ Heres what you could do with your new public URL
 Install Tunnelmole by running
 `sudo npm install -g tunnelmole`
 
+You need Node 16 or later to run Tunnelmole. You can check the version you have installed with `node --version`. If you have an earlier version of Node, update to the latest version at [https://nodejs.org](https://nodejs.org/en/download). 
+
 #### Using Tunnelmole
 - Start your web application locally and note down the port number its listening on
 - Run `tmole <port number>`, replacing `<port number>` with your applications port number. For example, if your application listens on port `8080`, run `tmole 8080`.
