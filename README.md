@@ -21,7 +21,7 @@ Heres what you could do with your new public URL
 - Share it with anyone over the internet such as a friend, colleague or client to show off your work
 
 ### Installation
-If you have NodeJS 16.10 or later, you can install Tunnelmole by running
+If you have **NodeJS 16.10** or later, you can install Tunnelmole by running
 ```
 sudo npm install -g tunnelmole
 ```
