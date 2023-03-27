@@ -26,7 +26,8 @@
   "files": [
     "dist",
     "src",
-    "cjs"
+    "cjs",
+    ".npmrc"
   ],
   "repository": {
     "type": "git",
