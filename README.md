@@ -21,10 +21,26 @@ Heres what you could do with your new public URL
 - Share it with anyone over the internet such as a friend, colleague or client to show off your work
 
 ### Installation
-Install Tunnelmole by running
-`sudo npm install -g tunnelmole`
+If you have NodeJS 16.10 or later, you can install Tunnelmole by running
+```
+sudo npm install -g tunnelmole
+```
 
-You need Node 16 or later to run Tunnelmole. You can check the version you have installed with `node --version`. If you have an earlier version of Node, update to the latest version at [https://nodejs.org](https://nodejs.org/en/download). 
+If not and you don't want to update to a supported version of Node yet, you can install the latest precompiled binary for your platform. This has the right version of node built in.
+#### Linux
+Copy and paste the following into a terminal
+```
+curl -s https://tunnelmole.com/sh/install-linux.sh | sudo bash 
+```
+
+#### Mac
+Copy and paste the following into a terminal
+```
+ curl -s https://tunnelmole.com/sh/install-mac.sh --output install-mac.sh && sudo bash install-mac.sh 
+```
+
+#### Windows
+Download the `exe` file for Windows [here](https://tunnelmole.com/downloads/tmole.exe) and put it somewhere in your PATH.
 
 #### Using Tunnelmole
 - Start your web application locally and note down the port number its listening on
@@ -48,6 +64,7 @@ If you are using the hosted service (which is the default) and you want to use a
 
 Otherwise, you can self host. To learn more go to the [Tunnelmole Service](https://github.com/robbie-cahill/tunnelmole-service/) GitHub repo.
 ### Using Tunnelmole as a dependency in your code
+To use Tunnelmole as a dependency for your project you need Node 16.10 or later.
 
 #### Add the dependency
 Add Tunnelmole as a dependency with
