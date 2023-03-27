@@ -42,7 +42,7 @@ Copy and paste the following into a terminal
 #### Windows
 Download the `exe` file for Windows [here](https://tunnelmole.com/downloads/tmole.exe) and put it somewhere in your PATH.
 
-#### Using Tunnelmole
+### Using Tunnelmole
 - Start your web application locally and note down the port number its listening on
 - Run `tmole <port number>`, replacing `<port number>` with your applications port number. For example, if your application listens on port `8080`, run `tmole 8080`.
 
