@@ -21,12 +21,14 @@ Heres what you could do with your new public URL
 - Share it with anyone over the internet such as a friend, colleague or client to show off your work
 
 ### Installation
+There are a couple of ways to install Tunnelmole.
+
 If you have **NodeJS 16.10** or later, you can install Tunnelmole by running
 ```
 sudo npm install -g tunnelmole
 ```
 
-If not and you don't want to update to a supported version of Node yet, you can install the latest precompiled binary for your platform. This has the right version of node built in.
+Alternatively you can install the latest precompiled binary for your platform. This has the right version of Node built in. You don't need any specific version of Node installed for this approach.
 #### Linux
 Copy and paste the following into a terminal
 ```
