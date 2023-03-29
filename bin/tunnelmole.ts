@@ -7,7 +7,7 @@ sourceMapSupport.install();
 import program from 'commander';
 import dispatchCommand from '../src/cli/dispatch-command.js';
 
-const VERSION = '2.0.43';
+const VERSION = '2.0.44';
 
 async function run()
 {
