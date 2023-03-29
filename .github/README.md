@@ -20,11 +20,15 @@ Heres what you could do with your new public URL
 - Cross device testing with real devices. Hop on another computer or device running the same or a different OS, then hit the public URL Tunnelmole generated for you
 - Share it with anyone over the internet such as a friend, colleague or client to show off your work
 
-### Installing Tunnelmole
-If you want to start using Tunnelmole right away without building it from source or installing anything else, the easiest method is to install the pre-built binary for your platform as these have no external dependencies.
+### Installation
+There are a couple of ways to install Tunnelmole.
 
-If you have NodeJS 16+ installed, you can install Tunnelmole with NPM (`npm install -g tunnelmole`).
+If you have **NodeJS 16.10** or later, you can install Tunnelmole by running
+```
+sudo npm install -g tunnelmole
+```
 
+Alternatively you can install the latest precompiled binary for your platform. This has the right version of Node built in. You don't need any specific version of Node installed for this approach
 #### Linux
 Copy and paste the following into a terminal
 ```
