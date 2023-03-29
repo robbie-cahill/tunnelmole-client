@@ -1,4 +1,9 @@
 ## Tunnelmole
+[![robbie-cahill - tunnelmole-client](https://img.shields.io/static/v1?label=robbie-cahill&message=tunnelmole-client&color=blue&logo=github)](https://github.com/robbie-cahill/tunnelmole-client "Go to GitHub repo")
+[![stars - tunnelmole-client](https://img.shields.io/github/stars/robbie-cahill/tunnelmole-client?style=social)](https://github.com/robbie-cahill/tunnelmole-client)
+[![forks - tunnelmole-client](https://img.shields.io/github/forks/robbie-cahill/tunnelmole-client?style=social)](https://github.com/robbie-cahill/tunnelmole-client)
+[![Tweet](https://img.shields.io/twitter/url/https/github.com/jonsn0w/hyde.svg?style=social)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Frobbie-cahill%2Ftunnelmole-client&via=_RobbieCahill&text=Check%20out%20Tunnelmole%2C%20the%20open%20source%20ngrok%20alternative&hashtags=%23JavaScript%2C%20%23TypeScript%2C%20%23Ngrok%2C%20%23NodeJS%2C%20%23React)
+
 Tunnelmole is a simple tool to give your locally running HTTP(s) servers a public URL. For example, you could get a public URL for
 - A web server
 - A Docker container
@@ -142,3 +147,6 @@ This allows you to start your application and get a public URL with a single com
 To get more info on hacking Tunnelmole as well as debugging, contributing and more view the full [README](https://github.com/robbie-cahill/tunnelmole-client) on GitHub.
 
 This package is for the Tunnelmole client. The service is also open source and its possible to self host. Get the code at (https://github.com/robbie-cahill/tunnelmole-service/).
+
+
+If you found this useful, dont forget to **Star On GitHub** [![stars - tunnelmole-client](https://img.shields.io/github/stars/robbie-cahill/tunnelmole-client?style=social)](https://github.com/robbie-cahill/tunnelmole-client)
