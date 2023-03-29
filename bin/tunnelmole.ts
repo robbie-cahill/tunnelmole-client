@@ -6,13 +6,16 @@ sourceMapSupport.install();
 
 import program from 'commander';
 import dispatchCommand from '../src/cli/dispatch-command.js';
+import { packageJson } from '../src/node/packageJson.js';
 
 const VERSION = '2.0.44';
 
 async function run()
 {
+    const { name, version } = packageJson;
+
     program
-        .name(' ')
+        .name(name)
         .usage(
 `
 
@@ -30,7 +33,7 @@ tunnelmole.com URLs are accessible from any unrestricted internet connection in 
 More detailed instructions, cookbooks and more are available at https://tunnelmole.com/docs
 `
         )
-        .version(VERSION)
+        .version(version)
         .arguments('[arg0]')
         .option('--set-api-key <apiKey>', 'Set your API key. After purchasing a subscription you can copy and paste the command shown on the page')
         .description('tmole - Share your local server with a Public URL')
