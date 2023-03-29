@@ -8,8 +8,6 @@ import program from 'commander';
 import dispatchCommand from '../src/cli/dispatch-command.js';
 import { packageJson } from '../src/node/packageJson.js';
 
-const VERSION = '2.0.44';
-
 async function run()
 {
     const { name, version } = packageJson;
