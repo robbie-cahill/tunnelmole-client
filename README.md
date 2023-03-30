@@ -50,6 +50,15 @@ Copy and paste the following into a terminal
 Download the `exe` file for Windows [here](https://tunnelmole.com/downloads/tmole.exe) and put it somewhere in your PATH.
 
 ### Using Tunnelmole
+First, verify that the install went fine by running
+```
+tmole
+```
+This command should print the help and doesn't connect to any external services. 
+
+If instead you got an error and you installed with `npm`, you probably have an older version of Node (lower than 16.10) installed. Check your NodeJS version with `node --version` and then reinstall using one of the above copy/paste install commands to get the pre compiled binary for your platform. If you got an error and are running a supported NodeJS version, be sure to [Raise an issue](https://github.com/robbie-cahill/tunnelmole-client/issues).
+
+Now that you have a working installation:
 - Start your web application locally and note down the port number its listening on
 - Run `tmole <port number>`, replacing `<port number>` with your applications port number. For example, if your application listens on port `8080`, run `tmole 8080`.
 
