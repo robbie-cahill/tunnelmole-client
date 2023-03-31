@@ -70,7 +70,6 @@ describe("Tunnelmole integration tests", () => {
 
         const response = await fetch(url + '/post-submit-form', {
             method: "POST",
-            //@ts-ignore
             body
         });
 
