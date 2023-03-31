@@ -1,3 +1,5 @@
+import { Headers } from "../http/headers";
+
 export default interface ForwardedRequestMessage
 {
     type: string,
