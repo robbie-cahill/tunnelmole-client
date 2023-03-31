@@ -4,6 +4,6 @@ export default interface ForwardedRequestMessage
     requestId: string,
     url: string,
     method: string,
-    headers: any,
-    body: any,
+    headers: Headers,
+    body: string,
 }
