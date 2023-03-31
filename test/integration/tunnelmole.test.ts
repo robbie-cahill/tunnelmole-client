@@ -17,7 +17,7 @@ describe("Tunnelmole integration tests", () => {
         });
 
          // Start the test express app listening on `localhost{$port}` 
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve) => {
             app.listen(port, () => {
                 resolve(true);            
             }); 
