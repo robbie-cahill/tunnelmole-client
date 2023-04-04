@@ -8,6 +8,9 @@ import program from 'commander';
 import dispatchCommand from '../src/cli/dispatch-command.js';
 import { packageJson } from '../src/node/packageJson.js';
 
+// This will make tunnelmole appear in the process list
+process.title = "tunnelmole";
+
 async function run()
 {
     const { name, version } = packageJson;
