@@ -98,7 +98,7 @@ export default async function tunnelmole(options : Options): Promise<string>
     });
 
     // Listen for the URL assigned event and return it
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         eventHandler.on(URL_ASSIGNED, (url: string) => {
             resolve(url);
         })
