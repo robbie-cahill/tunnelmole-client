@@ -14,7 +14,7 @@ const sendMessage = async function(message: Message) {
 
     const telemetryEndpoint = `${config.hostip.httpEndpoint}/tunnelmole-log-telemetry`
 
-    const response = await fetch(telemetryEndpoint, {
+    await fetch(telemetryEndpoint, {
         method: "POST",
         headers: {
             "Content-Type":"application/json",
