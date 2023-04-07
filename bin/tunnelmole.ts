@@ -1,5 +1,13 @@
 #!/usr/bin/env node
 
+sendMessage({
+    type: "cli-initialise",
+    data: {
+        nodeVersion: process.version ? process.version : "Unknown",
+        platform: process.platform ? process.platform : "Unknown"
+    }
+});
+
 // sourceMapSupport makes TypeScript line numbers show up in stack traces, making debugging much easier
 import sourceMapSupport from 'source-map-support';
 sourceMapSupport.install();
@@ -7,6 +15,7 @@ sourceMapSupport.install();
 import program from 'commander';
 import dispatchCommand from '../src/cli/dispatch-command.js';
 import { packageJson } from '../src/node/packageJson.js';
+import { sendMessage } from '../src/telemetry/send-message.js';
 
 // This will make tunnelmole appear in the process list
 process.title = "tunnelmole";
