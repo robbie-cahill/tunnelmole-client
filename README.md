@@ -152,6 +152,25 @@ This allows you to start your application and get a public URL with a single com
 ### How it works
 ![How Tunnelmole Works](docs/img/how-tunnelmole-works.png)
 
+### Telemetry
+To help improve the developer experience of Tunnelmole, some anonymized Telemetry data is collected by default.
+
+For example
+- Your NodeJS version and OS
+- Crash reports which may include stack traces to assist in detecting and debugging unforseen issues that were not detected during testing (especially the "it worked on my machine" type).
+
+To disable the telemetery, add the variable `TUNNELMOLE_TELEMETRY=0` to your environment.
+
+On Linux and Mac, to opt out for a single run of Tunnelmole you could put this in front of the `tmole` command, for example
+```
+TUNNELMOLE_TELEMETRY=0 tmole 80
+```
+
+To opt out by default:
+- On Linux or Mac add `TUNNELMOLE_TELEMETRY=0` to your shells startup script, usually `.bashrc` or `.zshrc` but it will be different if you are not using bash or zsh as your shell. Then log out and back in to apply the changes. 
+- On Windows add `TUNNELMOLE_TELEMETRY=0` to your environment variables using the System utility https://www.computerhope.com/issues/ch000549.htm. Then restart your computer to apply the changes.
+
+
 #### More information
 To get more info on hacking Tunnelmole as well as debugging, contributing and more view the full [README](https://github.com/robbie-cahill/tunnelmole-client) on GitHub.
 
