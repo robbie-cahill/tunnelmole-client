@@ -167,7 +167,7 @@ TUNNELMOLE_TELEMETRY=0 tmole 80
 ```
 
 To opt out by default:
-- On Linux or Mac add `TUNNELMOLE_TELEMETRY=0` to your shells startup script, usually `.bashrc` or `.zshrc` but it will be different if you are not using bash or zsh as your shell. Then log out and back in to apply the changes. 
+- On Linux or Mac add `export TUNNELMOLE_TELEMETRY=0` to your shells startup script, usually `.bashrc` or `.zshrc` but it will be different if you are not using bash or zsh as your shell. Then log out and back in to apply the changes. 
 - On Windows add `TUNNELMOLE_TELEMETRY=0` to your environment variables using the System utility https://www.computerhope.com/issues/ch000549.htm. Then restart your computer to apply the changes.
 
 
