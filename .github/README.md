@@ -186,7 +186,7 @@ You can optionally run `npm run watch` to automatically recompile code as you ma
 By default, Launch Tunnelmole invokes Tunnelmole to forward to port 8001 locally. You can change this by changing the port in the `.vscode/launch.json` config under the "args" section.
 
 ### How it works
-![How Tunnelmole Works](docs/img/how-tunnelmole-works.png)
+![How Tunnelmole Works](https://raw.githubusercontent.com/robbie-cahill/tunnelmole-client/main/docs/img/how-tunnelmole-works.png)
 
 Tunnelmole sets up a persistent Websocket connection between your device and a host machine running the [tunnelmole service](https://github.com/robbie-cahill/tunnelmole-service/). By default, this is the hosted tunnlemole service at [https://tunnelmole.com](https://tunnelmole.com?utm_source=tmoleClientGithubRepo) but you can self host.
 
@@ -195,6 +195,26 @@ As requests come in to the public URL, these requests are sent back through the 
 The client then forwards on the request to your locally running web server.
 
 Responses are handled in reverse. Your client forwards them to the Tunnelmole service, which then serves them up at the public URL.
+
+### Telemetry
+To help improve the developer experience of Tunnelmole, some anonymized Telemetry data is collected by default.
+
+For example
+- Your NodeJS version and OS
+- Crash reports which may include stack traces to assist in detecting and debugging unforseen issues that were not detected during testing (especially the "it worked on my machine" type).
+
+To disable the telemetery, add the variable `TUNNELMOLE_TELEMETRY=0` to your environment.
+
+On Linux and Mac, to opt out for a single run of Tunnelmole you could put this in front of the `tmole` command, for example
+```
+TUNNELMOLE_TELEMETRY=0 tmole 80
+```
+
+To opt out by default:
+- On Linux or Mac add `TUNNELMOLE_TELEMETRY=0` to your shells startup script, usually `.bashrc` or `.zshrc` but it will be different if you are not using bash or zsh as your shell. Then log out and back in to apply the changes. 
+- On Windows add `TUNNELMOLE_TELEMETRY=0` to your environment variables using the System utility https://www.computerhope.com/issues/ch000549.htm. Then restart your computer to apply the changes.
+
+
 
 ### Contributing
 There is no big company behind Tunnelmole and currently there is only one maintainer so any help is greatly appreciated!.
