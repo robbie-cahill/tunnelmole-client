@@ -14,7 +14,6 @@ sourceMapSupport.install();
 
 import program from 'commander';
 import dispatchCommand from '../src/cli/dispatch-command.js';
-import { packageJson } from '../src/node/packageJson.js';
 import { sendMessage } from '../src/telemetry/send-message.js';
 
 // This will make tunnelmole appear in the process list
@@ -22,10 +21,8 @@ process.title = "tunnelmole";
 
 async function run()
 {
-    const { name, version } = packageJson;
-
     program
-        .name(name)
+        .name('tunnelmole')
         .usage(
 `
 
@@ -43,7 +40,7 @@ tunnelmole.com URLs are accessible from any unrestricted internet connection in 
 More detailed instructions, cookbooks and more are available at https://tunnelmole.com/docs
 `
         )
-        .version(version)
+        .version('2.1.2')
         .arguments('[arg0]')
         .option('--set-api-key <apiKey>', 'Set your API key. After purchasing a subscription you can copy and paste the command shown on the page')
         .description('tmole - Share your local server with a Public URL')
