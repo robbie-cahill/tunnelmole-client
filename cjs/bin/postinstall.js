@@ -18,8 +18,8 @@ const installTelemetry = async () => {
         nodeVersion: process.version ? process.version : "Unknown",
         platform: process.platform ? process.platform : "Unknown"
     }
-    }).then(function (response) {
-      console.log(response);
+    }).then(function () {
+      // Ignore the response
     }).catch(function () {
       // Ignore the error
     });
