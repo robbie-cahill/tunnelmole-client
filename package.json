@@ -20,9 +20,6 @@
     "webhook",
     "testing"
   ],
-  "engines": {
-    "node": ">=16.10.0"
-  },
   "files": [
     "dist",
     "src",
