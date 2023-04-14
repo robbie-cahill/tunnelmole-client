@@ -4,6 +4,8 @@
 [![forks - tunnelmole-client](https://img.shields.io/github/forks/robbie-cahill/tunnelmole-client?style=social)](https://github.com/robbie-cahill/tunnelmole-client)
 [![Tweet](https://img.shields.io/twitter/url/https/github.com/jonsn0w/hyde.svg?style=social)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Frobbie-cahill%2Ftunnelmole-client&via=_RobbieCahill&text=Check%20out%20Tunnelmole%2C%20the%20open%20source%20ngrok%20alternative&hashtags=%23JavaScript%2C%20%23TypeScript%2C%20%23Ngrok%2C%20%23NodeJS%2C%20%23React)
 
+![How Tunnelmole Works](docs/img/tunnelmole.png)
+
 Tunnelmole is a simple tool to give your locally running HTTP(s) servers a public URL. For example, you could get a public URL for
 - A web server
 - A Docker container
