@@ -1,6 +1,5 @@
 import { Command } from "commander";
 import tunnelmole from "../tunnelmole.js";
-import { setApiKey } from "../identity/api-key-service.js";
 import { Options } from "../options.js";
 import isNumber from 'is-number';
 
