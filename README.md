@@ -4,7 +4,7 @@
 [![forks - tunnelmole-client](https://img.shields.io/github/forks/robbie-cahill/tunnelmole-client?style=social)](https://github.com/robbie-cahill/tunnelmole-client)
 [![Tweet](https://img.shields.io/twitter/url/https/github.com/jonsn0w/hyde.svg?style=social)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2Frobbie-cahill%2Ftunnelmole-client&via=_RobbieCahill&text=Check%20out%20Tunnelmole%2C%20the%20open%20source%20ngrok%20alternative&hashtags=%23JavaScript%2C%20%23TypeScript%2C%20%23Ngrok%2C%20%23NodeJS%2C%20%23React)
 
-![How Tunnelmole Works](docs/img/tunnelmole.png)
+![Tunnelmole](docs/img/tunnelmole.png)
 
 Tunnelmole is a simple tool to give your locally running HTTP(s) servers a public URL. For example, you could get a public URL for
 - A web server
@@ -13,7 +13,9 @@ Tunnelmole is a simple tool to give your locally running HTTP(s) servers a publi
 - A React or node application
 - A static website
 
-So, you could have your application running locally on port `8080`, then by running `tmole 8080` you could have a URL such as `https://df34.tunnelmole.com` routing to your locally running application.
+### Quick Demo
+*Getting a Public URL for the Tunnelmole Website, which is running locally*
+![Tunnelmole Example](docs/img/tunnelmole-demo.gif)
 
 Tunnelmole has been compared to a similar tool known as `ngrok`, but is open source.
 

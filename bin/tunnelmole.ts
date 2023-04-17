@@ -40,7 +40,7 @@ tunnelmole.com URLs are accessible from any unrestricted internet connection in 
 More detailed instructions, cookbooks and more are available at https://tunnelmole.com/docs
 `
         )
-        .version('2.1.9')
+        .version('2.1.10')
         .arguments('[arg0]')
         .option('--set-api-key <apiKey>', 'Set your API key. After purchasing a subscription you can copy and paste the command shown on the page')
         .description('tmole - Share your local server with a Public URL')
