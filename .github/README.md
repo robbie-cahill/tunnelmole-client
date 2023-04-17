@@ -1,4 +1,6 @@
 ## Tunnelmole
+
+![Tunnelmole](https://raw.githubusercontent.com/robbie-cahill/tunnelmole-client/main/docs/img/tunnelmole.png)
 Tunnelmole is a simple tool to give your locally running HTTP(s) servers a public URL. For example, you could get a public URL for
 - A web server
 - A Docker container
@@ -7,6 +9,10 @@ Tunnelmole is a simple tool to give your locally running HTTP(s) servers a publi
 - A static website
 
 So, you could have your application running locally on port `8080`, then by running `tmole 8080` you could have a URL such as `https://df34.tunnelmole.com` routing to your locally running application.
+
+### Quick Demo
+*Getting a Public URL for the Tunnelmole Website, which is running locally*
+![Tunnelmole Example](https://raw.githubusercontent.com/robbie-cahill/tunnelmole-client/main/docs/img/tunnelmole-demo.gif)
 
 Tunnelmole has been compared to a similar tool known as `ngrok`, but is open source.
 
