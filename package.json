@@ -37,7 +37,7 @@
     "lint": "eslint . --ext .ts",
     "start": "npm run watch & nodemon dist/src/tunnelmole.js 3000",
     "test": "npm run build && node --experimental-vm-modules node_modules/jest/bin/jest --forceExit",
-    "postinstall": "cjs/bin/postinstall.js"
+    "postinstall": "node cjs/bin/postinstall.js"
   },
   "bin": {
     "tmole": "dist/bin/tunnelmole.js",
