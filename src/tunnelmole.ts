@@ -106,6 +106,14 @@ export default async function tunnelmole(options : Options): Promise<string>
         console.error(error);
     });
 
+    // Stop when the websocket closes
+    websocket.on('close', (error) => {
+        // TODO: Reconnect
+        websocket.sockets?.forEach(
+        (socket) => socket.readyState === 1 && socket.close()
+        )
+    })
+
     // Listen for the URL assigned event and return it
     return new Promise((resolve) => {
         eventHandler.on(URL_ASSIGNED, (url: string) => {
