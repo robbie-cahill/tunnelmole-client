@@ -21,7 +21,16 @@ export default async function tunnelmole(options : Options): Promise<string>
        return;
     }
 
-    const websocket = new HostipWebSocket(config.hostip.endpoint);
+    const url = new URL(config.hostip.endpoint)
+    const ssl = !options.domain.includes('localhost')
+    if (options.domain) {
+        url.port = ssl ? '443' : '80'
+        url.host = options.domain
+        // if (url.host.includes('localhost')) url.hostname = '127.0.0.1'
+    }
+    if (!ssl) url.protocol = 'ws'
+
+    const websocket = new HostipWebSocket(url);
     const websocketIsReady = websocket.readyState === 1;
 
     const sendInitialiseMessage = async () => {
