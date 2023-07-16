@@ -69,8 +69,8 @@ Now that you have a working installation:
 Here's what it should look like
 ```
 $ tmole 8080
-http://evgtkh-ip-49-145-166-122.tunnelmole.com is forwarding to localhost:8080
-https://evgtkh-ip-49-145-166-122.tunnelmole.com is forwarding to localhost:8080
+http://evgtkh-ip-49-145-166-122.tunnelmole.net is forwarding to localhost:8080
+https://evgtkh-ip-49-145-166-122.tunnelmole.net is forwarding to localhost:8080
 ```
 
 Now, just go to either one of the URLs shown with your web browser.
@@ -78,7 +78,7 @@ The URLs are public - this means you can also share them with collaborators and 
 
 #### Custom subdomain
 Sometimes, it can be useful to have a domain that does not change frequently. To use a custom subdoman run
-`tmole 8080 as <yourdomain>.tunnelmole.com`.
+`tmole 8080 as <yourdomain>.tunnelmole.net`.
 
 If you are using the hosted service (which is the default) and you want to use a custom subdomain you'll need to purchase a subscription [Learn More](https://dashboard.tunnelmole.com?utm_source=tunnelmoleClientNPM).
 
@@ -110,7 +110,7 @@ Once the module is imported you can start tunnelmole with the code below, changi
 const url = await tunnelmole({
     port: 3000
 });
-// url = https://idsq6j-ip-157-211-195-169.tunnelmole.com
+// url = https://idsq6j-ip-157-211-195-169.tunnelmole.net
 ```
 
 Tunnelmole will start in the background and you'll see output in the console log similar to the Tunnelmole command line application which will include the public URLs that now point to your application. The function is `async` and won't block execution of the rest of your code.
@@ -119,9 +119,9 @@ If you want to use a custom subdomain, you could also pass the domain as an opti
 ```javascript
 const url = await tunnelmole({
     port: 3000,
-    domain: '<your tunnelmole domain e.g. mysite.tunnelmole.com>'
+    domain: '<your tunnelmole domain e.g. mysite.tunnelmole.net>'
 });
-// url = mydomain.tunnelmole.com
+// url = mydomain.tunnelmole.net
 ```
 
 Again if you are using the hosted service (which is the default) and you want to use a custom subdomain you'll need to purchase a subscription [Learn More](https://dashboard.tunnelmole.com?utm_source=tunnelmoleClientNPM).

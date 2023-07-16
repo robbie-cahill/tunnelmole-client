@@ -16,7 +16,7 @@ export default async function dispatchCommand(arg0 : any, command : Command) {
     if (typeof command.args[1] === 'string' && command.args[1].toLowerCase() === 'as' && typeof command.args[2] === 'string') {
         options.domain = command.args[2];
     } else if (typeof command.args[1] === 'string' && command.args[1] === "AS" && typeof command.args[2] !== 'string') {
-        console.info("Please enter the domain you want to expose e.g. foo.tunnelmole.com");
+        console.info("Please enter the domain you want to expose e.g. foo.tunnelmole.net");
     } 
 
     // Set the API key if an API key is passed in
