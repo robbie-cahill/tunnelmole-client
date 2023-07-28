@@ -8,7 +8,7 @@ Tunnelmole is a simple tool to give your locally running HTTP(s) servers a publi
 - A React or node application
 - A static website
 
-So, you could have your application running locally on port `8080`, then by running `tmole 8080` you could have a URL such as `https://df34.tunnelmole.com` routing to your locally running application.
+So, you could have your application running locally on port `8080`, then by running `tmole 8080` you could have a URL such as `https://df34.tunnelmole.net` routing to your locally running application.
 
 ### Quick Demo
 *Getting a Public URL for the Tunnelmole Website, which is running locally*
@@ -65,8 +65,8 @@ To install Tunnelmole with NPM you need to have NodeJS installed. If not, get it
 Here's what it should look like
 ```
 $ tmole 8080
-http://evgtkh-ip-49-145-166-122.tunnelmole.com is forwarding to localhost:8080
-https://evgtkh-ip-49-145-166-122.tunnelmole.com is forwarding to localhost:8080
+http://evgtkh-ip-49-145-166-122.tunnelmole.net is forwarding to localhost:8080
+https://evgtkh-ip-49-145-166-122.tunnelmole.net is forwarding to localhost:8080
 ```
 
 Now, just go to either one of the URLs shown with your web browser.
@@ -77,7 +77,7 @@ The URLs are public - this means you can also share them with collaborators and 
 
 #### Custom subdomain
 Sometimes, it can be useful to have a domain that does not change frequently. To use a custom subdoman run
-`tmole 8080 as <yourdomain>.tunnelmole.com`.
+`tmole 8080 as <yourdomain>.tunnelmole.net`.
 
 If you are using the hosted service (which is the default) and you want to use a custom subdomain you'll need to purchase a subscription [Learn More](https://dashboard.tunnelmole.com?utm_source=tunnelmoleClientGithub).
 
@@ -118,7 +118,7 @@ If you want to use a custom subdomain, you could also pass the domain as an opti
 ```javascript
 tunnelmole({
     port: 3000,
-    domain: '<your tunnelmole domain e.g. mysite.tunnelmole.com>'
+    domain: '<your tunnelmole domain e.g. mysite.tunnelmole.net>'
 });
 ```
 Again if you are using the hosted service (which is the default) and you want to use a custom subdomain you'll need to purchase a subscription [Learn More](https://dashboard.tunnelmole.com?utm_source=tunnelmoleClientGithub).

@@ -16,6 +16,11 @@ export default async function tunnelmole(options : Options)
     await initStorage();
     await initialiseClientId();
 
+    // Set port to 3000 if port is not specified
+    if (options.port === undefined) {
+        options.port = 3000;
+    }
+
     if (options.setApiKey) {
        await setApiKey(options.setApiKey);
        return;
@@ -55,7 +60,7 @@ export default async function tunnelmole(options : Options)
             domain = domain.replace('https://', '');
 
             if (!validator.isURL(domain)) {
-                console.info("Invalid domain name passed, please use the format mydomain.tunnelmole.com");
+                console.info("Invalid domain name passed, please use the format mydomain.tunnelmole.net");
                 return Promise.resolve();
             }
 
