@@ -10,9 +10,13 @@ export default async function forwardedRequest(forwardedRequestMessage: Forwarde
     const port = options.port;
     const { requestId, url, headers } = forwardedRequestMessage;
 
+    // Prevent issue with gzip encoding
+    delete headers['Accept-Encoding']
+    delete headers['accept-encoding']
+
     // @todo: Once GET is working, add support for all HTTP methods
     const requestOptions : http.RequestOptions = {
-        hostname: 'localhost',
+        hostname: '127.0.0.1',
         method: forwardedRequestMessage.method,
         port: port,
         path: url,

@@ -11,7 +11,7 @@ import validator from 'validator';
 import { initStorage } from './node-persist/storage.js';
 import { eventHandler, URL_ASSIGNED } from './events/event-handler.js';
 
-export default async function tunnelmole(options : Options): Promise<string>
+export default async function tunnelmole(options : Options)
 {
     await initStorage();
     await initialiseClientId();
@@ -26,7 +26,16 @@ export default async function tunnelmole(options : Options): Promise<string>
        return;
     }
 
-    const websocket = new HostipWebSocket(config.hostip.endpoint);
+    const url = new URL(config.hostip.endpoint)
+    if (options.domain) {
+        const ssl = !options.domain.includes('localhost')
+        url.port = ssl ? '443' : '80'
+        url.host = options.domain
+        // if (url.host.includes('localhost')) url.hostname = '127.0.0.1'
+        if (!ssl) url.protocol = 'ws'
+    }
+
+    const websocket = new HostipWebSocket(url);
     const websocketIsReady = websocket.readyState === 1;
 
     const sendInitialiseMessage = async () => {
@@ -102,10 +111,22 @@ export default async function tunnelmole(options : Options): Promise<string>
         console.error(error);
     });
 
+    // Stop when the websocket closes
+    websocket.on('close', (error) => {
+        // TODO: Reconnect
+        websocket.sockets?.forEach(
+        (socket) => socket.readyState === 1 && socket.close()
+        )
+    })
+
     // Listen for the URL assigned event and return it
-    return new Promise((resolve) => {
+    return new Promise<{url:string,on:(type:'error'|'close',callback:()=>void)=>void,close:()=>void}>((resolve) => {
         eventHandler.on(URL_ASSIGNED, (url: string) => {
-            resolve(url);
+            resolve({
+                url,
+                on: () => {},
+                close: () => websocket.close()
+            });
         })
     });
 }
