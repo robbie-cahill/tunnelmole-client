@@ -36,6 +36,7 @@
     "watch": "tsc -p ./ -w",
     "lint": "eslint . --ext .ts",
     "start": "npm run watch & nodemon dist/src/tunnelmole.js 3000",
+    "dev": "node ./dist/bin/tunnelmole.js",
     "test": "npm run build && node --experimental-vm-modules node_modules/jest/bin/jest --forceExit",
     "postinstall": "node cjs/bin/postinstall.js"
   },
@@ -65,6 +66,7 @@
     "nanoid": "^3.1.5",
     "node-fetch": "^2.6.9",
     "node-localstorage": "^2.1.6",
+    "nodemon": "^3.0.1",
     "source-map-support": "^0.5.21",
     "toml": "^3.0.0",
     "tunnelmole": "^2.1.5",

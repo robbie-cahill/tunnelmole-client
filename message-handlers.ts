@@ -24,24 +24,20 @@ function WebSocketCloseMessage(message, websocket, options) {
   if (!websocket.sockets) return console.log('WebSocketCloseMessage impossible')
 
   const { socketId, code, data } = message
-  console.log('me', message)
   const found = websocket.sockets.get(socketId)
-  console.log('found', found?.readyState)
-  if (found.readyState === 1) found?.close(code, data)
+  if (found.readyState === 1) found?.close(code === 1006 ? 1001 : code, data)
 }
 
 function WebSocketOpenMessage(forwardedRequestMessage, websocket, options) {
   const port = options.port
   const { socketId, url, headers } = forwardedRequestMessage
-  // console.log('WebSocketOpenMessage', 'ws://127.0.0.1:' + port + url, headers)
-
   delete headers['sec-websocket-key']
   delete headers['sec-websocket-extensions']
 
   // Create end to end tunnel
   if (!websocket.sockets) websocket.sockets = new Map()
   const datatunnel = new HostipWebSocket('ws://127.0.0.1:' + port + url, {
-    headers,
+    // headers: { cookie: headers.cookie },
   })
   websocket.sockets.set(socketId, datatunnel)
 
@@ -57,6 +53,9 @@ function WebSocketOpenMessage(forwardedRequestMessage, websocket, options) {
   datatunnel.on('close', () => {
     const close = { type: 'WebSocketCloseMessage', socketId }
     websocket.sendMessage(close)
+  })
+  datatunnel.on('error', (e) => {
+    console.log('datatunnel.error', socketId, e)
   })
 }
 
