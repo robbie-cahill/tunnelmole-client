@@ -22,7 +22,6 @@ export default async function tunnelmole(options : Options): Promise<string>
     }
 
     if (options.setApiKey) {
-       await setApiKey(options.setApiKey);
        return;
     }
 

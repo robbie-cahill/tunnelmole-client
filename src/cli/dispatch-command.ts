@@ -3,6 +3,7 @@ import tunnelmole from "../tunnelmole.js";
 import { Options } from "../options.js";
 import isNumber from 'is-number';
 import { setApiKey } from "../identity/api-key-service.js";
+import { unreserveDomain } from "../domains/unreseve-domain.js";
 
 /**
  * Build Options from the command line input, then pass them off to tunnelmole()
@@ -25,8 +26,9 @@ export default async function dispatchCommand(arg0 : any, command : Command) {
     const routeOption = resolveRoute(command);
     if (typeof routeOption === 'string') {
         const handler = routes[routeOption];
-        // Call the handler, command[routeOption] is the value of the command line option
+        // Call the handler, command[routeOption] is the value of the command line option then exit
         await handler(command[routeOption]);
+        return Promise.resolve();
     }
 
     if (options.port) {
@@ -51,5 +53,6 @@ const resolveRoute = (command: Command): string|undefined => {
 }
 
 const routes = {
-    "setApiKey": setApiKey
+    "setApiKey": setApiKey,
+    "unreserveSubdomain": unreserveDomain
 }
