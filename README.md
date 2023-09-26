@@ -53,6 +53,11 @@ Copy and paste the following into a terminal
 #### Windows
 Download the `exe` file for Windows [here](https://tunnelmole.com/downloads/tmole.exe) and put it somewhere in your PATH.
 
+#### Build the binaries yourself
+The above binaries are generated with a combination of [pkg](https://github.com/vercel/pkg) and [rollup](https://github.com/rollup/rollup).
+
+To create your own, set up this repo and then run `npm run build-all-bin`. Once that finishes, run the appropriately named binary for your OS from `tmole-linux`, `tmole-mac` or `tmole.exe` (windows). Send the other ones to your friends running different OSes.
+
 ### Using Tunnelmole
 First, verify that the install went fine by running
 ```
