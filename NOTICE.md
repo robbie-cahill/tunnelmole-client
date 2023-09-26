@@ -1,3 +1,3 @@
 `tmole-client` is Copyright(c) Robbie Cahill and contributors.
 
-`tmole-client` is licensed under the MIT License, version 3. A copy of the license is committed to this repository.
+`tmole-client` is licensed under the MIT License. A copy of the license is committed to this repository.
