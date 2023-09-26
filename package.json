@@ -4,7 +4,6 @@
   "description": "Tunnelmole, an open source ngrok alternative. Instant public URLs for any http/https based application. Available as a command line application or as an NPM dependency for your code. Stable and maintained. Good test coverage. Works behind firewalls",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
-  "type": "module",
   "homepage": "https://tunnelmole.com",
   "keywords": [
     "tunnelmole",
@@ -37,6 +36,10 @@
     "lint": "eslint . --ext .ts",
     "start": "npm run watch & nodemon dist/src/tunnelmole.js 3000",
     "test": "npm run build && node --experimental-vm-modules node_modules/jest/bin/jest --forceExit",
+    "prerollup": "cat package.json | jq 'del(.type)' > /tmp/package.json && mv /tmp/package.json package.json",
+    "rollup": "npm run prerollup && rollup -c",
+    "build-windows-bin": "pkg tunnelmole.bundle.js --targets node18-win-x64 --output tmole.exe",
+    "build-linux-bin": "pkg tunnelmole.bundle.js --targets node18-linux-x64 --output tmole-linux",
     "postinstall": "node cjs/bin/postinstall.js"
   },
   "bin": {
@@ -72,6 +75,9 @@
     "ws": "^7.2.5"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.4",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.2.1",
     "@types/express": "^4.17.17",
     "@types/multer": "^1.4.7",
     "@types/node": "^18.15.6",
