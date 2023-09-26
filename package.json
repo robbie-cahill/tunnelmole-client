@@ -39,7 +39,7 @@
     "test": "npm run build && node --experimental-vm-modules node_modules/jest/bin/jest --forceExit",
     "prerollup": "cat package.json | jq 'del(.type)' > /tmp/package.json && mv /tmp/package.json package.json",
     "postrollup": "git checkout package.json",
-    "rollup": "npm run prerollup && rollup -c --bundleConfigAsCjs & npm run postrollup #Prerollup is a workaround to prevent node complaining about the package type in the cjs bundle",
+    "rollup": "npm run prerollup && rollup -c --bundleConfigAsCjs && npm run postrollup #Prerollup is a workaround to prevent node complaining about the package type in the cjs bundle",
     "build-linux-bin": "pkg tunnelmole.bundle.js --targets node18-linux-x64 --output tmole-linux",
     "build-mac-bin": "pkg tunnelmole.bundle.js --targets node18-mac-x64 --output tmole-mac",
     "build-windows-bin": "pkg tunnelmole.bundle.js --targets node18-win-x64 --output tmole.exe",
