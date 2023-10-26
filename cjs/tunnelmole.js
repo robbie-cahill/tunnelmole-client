@@ -6,7 +6,7 @@
 
 const tunnelmole = async function(options) {
     const tunnelmole = await import('../dist/src/index.js');
-    tunnelmole.tunnelmole(options);
+    return tunnelmole.tunnelmole(options);
 };
 
 module.exports = tunnelmole;
