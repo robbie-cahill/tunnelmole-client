@@ -133,6 +133,9 @@ Again if you are using the hosted service (which is the default) and you want to
 
 Otherwise, you can self host. To learn more about this option go to the [Tunnelmole Service](https://github.com/robbie-cahill/tunnelmole-service/) GitHub repo.
 
+#### Suppress output/logs
+To suppress the initial output with the URLs, set the environment variable `TUNNELMOLE_QUIET_MODE=1` somewhere in your environment. This might be useful in a CI/CD environment or in other scripts.
+
 #### Using Tunnelmole with NPM scripts
 Installing Tunnelmole as an NPM dependency will make the following executables available in your project:
 ```
