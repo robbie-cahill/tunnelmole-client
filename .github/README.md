@@ -1,4 +1,6 @@
 ## Tunnelmole
+![Tunnelmole](https://raw.githubusercontent.com/robbie-cahill/tunnelmole-client/main/docs/img/tunnelmole.png)
+
 Tunnelmole is a simple tool to give your locally running HTTP(s) servers a public URL. For example, you could get a public URL for
 - A web server
 - A Docker container
@@ -6,7 +8,11 @@ Tunnelmole is a simple tool to give your locally running HTTP(s) servers a publi
 - A React or node application
 - A static website
 
-So, you could have your application running locally on port `8080`, then by running `tmole 8080` you could have a URL such as `https://df34.tunnelmole.com` routing to your locally running application.
+So, you could have your application running locally on port `8080`, then by running `tmole 8080` you could have a URL such as `https://df34.tunnelmole.net` routing to your locally running application.
+
+### Quick Demo
+*Getting a Public URL for the Tunnelmole Website, which is running locally*
+![Tunnelmole Example](https://raw.githubusercontent.com/robbie-cahill/tunnelmole-client/main/docs/img/tunnelmole-demo.gif)
 
 Tunnelmole has been compared to a similar tool known as `ngrok`, but is open source.
 
@@ -20,11 +26,15 @@ Heres what you could do with your new public URL
 - Cross device testing with real devices. Hop on another computer or device running the same or a different OS, then hit the public URL Tunnelmole generated for you
 - Share it with anyone over the internet such as a friend, colleague or client to show off your work
 
-### Installing Tunnelmole
-If you want to start using Tunnelmole right away without building it from source or installing anything else, the easiest method is to install the pre-built binary for your platform as these have no external dependencies.
+### Installation
+There are a couple of ways to install Tunnelmole.
 
-If you have NodeJS installed, you can install Tunnelmole with NPM (`npm install -g tunnelmole`).
+If you have **NodeJS 16.10** or later, you can install Tunnelmole by running
+```
+sudo npm install -g tunnelmole
+```
 
+Alternatively you can install the latest precompiled binary for your platform. This has the right version of Node built in. You don't need any specific version of Node installed for this approach
 #### Linux
 Copy and paste the following into a terminal
 ```
@@ -55,8 +65,8 @@ To install Tunnelmole with NPM you need to have NodeJS installed. If not, get it
 Here's what it should look like
 ```
 $ tmole 8080
-http://evgtkh-ip-49-145-166-122.tunnelmole.com is forwarding to localhost:8080
-https://evgtkh-ip-49-145-166-122.tunnelmole.com is forwarding to localhost:8080
+http://evgtkh-ip-49-145-166-122.tunnelmole.net is forwarding to localhost:8080
+https://evgtkh-ip-49-145-166-122.tunnelmole.net is forwarding to localhost:8080
 ```
 
 Now, just go to either one of the URLs shown with your web browser.
@@ -67,7 +77,7 @@ The URLs are public - this means you can also share them with collaborators and 
 
 #### Custom subdomain
 Sometimes, it can be useful to have a domain that does not change frequently. To use a custom subdoman run
-`tmole 8080 as <yourdomain>.tunnelmole.com`.
+`tmole 8080 as <yourdomain>.tunnelmole.net`.
 
 If you are using the hosted service (which is the default) and you want to use a custom subdomain you'll need to purchase a subscription [Learn More](https://dashboard.tunnelmole.com?utm_source=tunnelmoleClientGithub).
 
@@ -108,12 +118,14 @@ If you want to use a custom subdomain, you could also pass the domain as an opti
 ```javascript
 tunnelmole({
     port: 3000,
-    domain: '<your tunnelmole domain e.g. mysite.tunnelmole.com>'
+    domain: '<your tunnelmole domain e.g. mysite.tunnelmole.net>'
 });
 ```
 Again if you are using the hosted service (which is the default) and you want to use a custom subdomain you'll need to purchase a subscription [Learn More](https://dashboard.tunnelmole.com?utm_source=tunnelmoleClientGithub).
 
 Otherwise, you can self host. To learn more about this option go to the [Tunnelmole Service](https://github.com/robbie-cahill/tunnelmole-service/) GitHub repo.
+#### Suppress output/logs
+To suppress the initial output with the URLs, set the environment variable `TUNNELMOLE_QUIET_MODE=1` somewhere in your environment. This might be useful in a CI/CD environment or in other scripts.
 
 #### Using Tunnelmole with NPM scripts
 Installing Tunnelmole as an NPM dependency will make the following executables available in your project:
@@ -182,7 +194,7 @@ You can optionally run `npm run watch` to automatically recompile code as you ma
 By default, Launch Tunnelmole invokes Tunnelmole to forward to port 8001 locally. You can change this by changing the port in the `.vscode/launch.json` config under the "args" section.
 
 ### How it works
-![How Tunnelmole Works](docs/img/how-tunnelmole-works.png)
+![How Tunnelmole Works](https://raw.githubusercontent.com/robbie-cahill/tunnelmole-client/main/docs/img/how-tunnelmole-works.png)
 
 Tunnelmole sets up a persistent Websocket connection between your device and a host machine running the [tunnelmole service](https://github.com/robbie-cahill/tunnelmole-service/). By default, this is the hosted tunnlemole service at [https://tunnelmole.com](https://tunnelmole.com?utm_source=tmoleClientGithubRepo) but you can self host.
 
@@ -191,6 +203,26 @@ As requests come in to the public URL, these requests are sent back through the 
 The client then forwards on the request to your locally running web server.
 
 Responses are handled in reverse. Your client forwards them to the Tunnelmole service, which then serves them up at the public URL.
+
+### Telemetry
+To help improve the developer experience of Tunnelmole, some anonymized Telemetry data is collected by default.
+
+For example
+- Your NodeJS version and OS
+- Crash reports which may include stack traces to assist in detecting and debugging unforseen issues that were not detected during testing (especially the "it worked on my machine" type).
+
+To disable the telemetery, add the variable `TUNNELMOLE_TELEMETRY=0` to your environment.
+
+On Linux and Mac, to opt out for a single run of Tunnelmole you could put this in front of the `tmole` command, for example
+```
+TUNNELMOLE_TELEMETRY=0 tmole 80
+```
+
+To opt out by default:
+- On Linux or Mac add `export TUNNELMOLE_TELEMETRY=0` to your shells startup script, usually `.bashrc` or `.zshrc` but it will be different if you are not using bash or zsh as your shell. Then log out and back in to apply the changes. 
+- On Windows add `TUNNELMOLE_TELEMETRY=0` to your environment variables using the System utility https://www.computerhope.com/issues/ch000549.htm. Then restart your computer to apply the changes.
+
+
 
 ### Contributing
 There is no big company behind Tunnelmole and currently there is only one maintainer so any help is greatly appreciated!.

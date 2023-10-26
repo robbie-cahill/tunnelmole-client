@@ -3,7 +3,6 @@ import bodyParser from 'body-parser';
 import multer from 'multer';
 
 const app = express();
-const port = 3000;
 
 const upload = multer({dest: '/tmp'});
 

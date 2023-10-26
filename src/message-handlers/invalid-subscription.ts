@@ -1,8 +1,6 @@
-import HostipWebSocket from "../websocket/host-ip-websocket.js";
 import InvalidSubscriptionMessage from "../messages/invalid-subscription-message.js";
-import { Options } from "../options.js";
 
-export default function invalidSubscription(message: InvalidSubscriptionMessage, websocket: HostipWebSocket, options: Options): void {
+export default function invalidSubscription(message: InvalidSubscriptionMessage): void {
     if (typeof message.apiKey === 'string') {
         console.info(
             'You have set the invalid api key ' + message.apiKey + '.\n\n' +
@@ -12,7 +10,7 @@ export default function invalidSubscription(message: InvalidSubscriptionMessage,
         );
     } else {
         console.info(
-            'Custom tunnelmole.com subdomains are a premium feature and require a subscription.' + "\n\n" +
+            'Custom tunnelmole.net subdomains are a premium feature and require a subscription.' + "\n\n" +
             'To get started, sign up at https://dashboard.tunnelmole.com. Plans start at $5.99 per month.' + "\n\n" +
             'Tunnelmole is an open source project so you can also try self hosting, if you prefer to spend time instead of money.' + '\n' + 
             'Head over to https://github.com/robbie-cahill/tunnelmole-service to learn more.\n\n' +

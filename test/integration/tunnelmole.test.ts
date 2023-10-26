@@ -4,6 +4,7 @@ import FormData from 'form-data';
 import { tunnelmole } from "../../src";
 import { URLSearchParams } from "url";
 import { app } from "./test-server/app";
+import config from "../../config.js";
 
 describe("Tunnelmole integration tests", () => {
     // Initialise connection
@@ -11,13 +12,24 @@ describe("Tunnelmole integration tests", () => {
     let url: string;
 
     beforeAll(async () => {
-         // Start Tunnelmole, the URL will tunnel to `localhost:${port}`
+        // Start Tunnelmole, the URL will tunnel to `localhost:${port}`
+        const isLocal = config.hostip.endpoint === 'ws://localhost:8081';
+
+        // Set domain for local testing to avoid the need to pause and set the hostname in /etc/hosts each time
+        const domain = isLocal ? 'testsite.localhost' : undefined;
+
         url = await tunnelmole({
-            port
+            port,
+            domain
         });
+     
+        // Rewrite the URL for local testing to be plain http and include the default port
+        if (isLocal) {
+            url = 'http://testsite.localhost:8001'
+        }
 
          // Start the test express app listening on `localhost{$port}` 
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve) => {
             app.listen(port, () => {
                 resolve(true);            
             }); 
@@ -70,7 +82,6 @@ describe("Tunnelmole integration tests", () => {
 
         const response = await fetch(url + '/post-submit-form', {
             method: "POST",
-            //@ts-ignore
             body
         });
 
