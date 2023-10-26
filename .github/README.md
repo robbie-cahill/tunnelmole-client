@@ -107,7 +107,7 @@ const tunnelmole = require('tunnelmole/cjs');
 
 Once the module is imported you can start tunnelmole with the code below, changing port 3000 to the port your application listens on if it is different.
 ```javascript
-tunnelmole({
+const url = tunnelmole({
     port: 3000
 });
 ```
@@ -116,7 +116,7 @@ Tunnelmole will start in the background and you'll see output in the console log
 
 If you want to use a custom subdomain, you could also pass the domain as an option.
 ```javascript
-tunnelmole({
+const url = tunnelmole({
     port: 3000,
     domain: '<your tunnelmole domain e.g. mysite.tunnelmole.net>'
 });
