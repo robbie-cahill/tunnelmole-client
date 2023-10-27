@@ -52,8 +52,11 @@ export default async function forwardedRequest(forwardedRequestMessage: Forwarde
         })
     });
 
-    const requestBody : Buffer = Buffer.from(forwardedRequestMessage.body, 'base64');
-    request.write(requestBody);
+    // Send the request body if its not empty
+    if (forwardedRequestMessage.body !== '') {
+        const requestBody : Buffer = Buffer.from(forwardedRequestMessage.body, 'base64');
+        request.write(requestBody);
+    }
 
     request.on('error', (error : any) => {
         log(error);
