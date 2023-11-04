@@ -8,7 +8,7 @@ import config from "../../config.js";
 
 describe("Tunnelmole integration tests", () => {
     // Initialise connection
-    const port = 3000;
+    const port = 3001;
     let url: string;
 
     beforeAll(async () => {
