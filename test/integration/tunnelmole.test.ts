@@ -5,6 +5,7 @@ import { tunnelmole } from "../../src";
 import { URLSearchParams } from "url";
 import { app } from "./test-server/app";
 import config from "../../config.js";
+import { ROOT_DIR } from "../../src/filesystem/constants";
 
 describe("Tunnelmole integration tests", () => {
     // Initialise connection
@@ -89,8 +90,8 @@ describe("Tunnelmole integration tests", () => {
         expect(responseData.firstName).toEqual("John");
     });
 
-    it.skip("Upload binary photo", async() => {
-        const image : Buffer = fs.readFileSync(__dirname + '/files/img/test-image.png');
+    it("Upload binary photo", async() => {
+        const image : Buffer = fs.readFileSync(`${ROOT_DIR}/test/integration/files/img/test-image.png`);
 
         const response = await fetch(url + '/image-upload', {
             method: "POST",
@@ -105,8 +106,8 @@ describe("Tunnelmole integration tests", () => {
         expect(equal).toBe(1);
     });
 
-    it.skip("Submit multipart/form-data with image and text field as POST", async() => {
-        const image : Buffer = fs.readFileSync(__dirname + '/files/img/test-image.png');
+    it("Submit multipart/form-data with image and text field as POST", async() => {
+        const image : Buffer = fs.readFileSync(`${ROOT_DIR}/test/integration/files/img/test-image.png`);
 
         const form = new FormData();
         form.append('firstName', 'John');
