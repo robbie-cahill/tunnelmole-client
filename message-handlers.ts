@@ -5,7 +5,7 @@ import invalidSubscription from "./src/message-handlers/invalid-subscription.js"
 import domainAlreadyReserved from "./src/message-handlers/domain-already-reserved.js";
 import domainReservationError from "./src/message-handlers/domain-reservation-error.js";
 import tooManyDomains from "./src/message-handlers/too-many-domains.js";
-
+import clientMessage from "./src/message-handlers/client-message.js";
 
 /**
  * Websocket message handlers for different message types
@@ -18,7 +18,8 @@ const messageHandlers = {
     invalidSubscription,
     domainAlreadyReserved,
     domainReservationError,
-    tooManyDomains
+    tooManyDomains,
+    clientMessage,
 }
 
 export { messageHandlers };
