@@ -270,3 +270,8 @@ Read the above "Contributing" section to learn how to contribute.
 - Project Website with guides and documentation: [https://tunnelmole.com](https://tunnelmole.com?utm_source=tmoleClientGithubRepo)
 - A good overview of Websocket: [https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API)
 
+#### Uninstallation
+- If you installed with `npm`, run `npm uninstall -g tunnelmole`
+- On Linux or Mac, run `whereis tmole`, then `whereis tunnelmole` and delete the both files shown
+- On Windows, delete the `tmole.exe` you downloaded
+
