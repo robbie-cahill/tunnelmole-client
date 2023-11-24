@@ -273,5 +273,5 @@ Read the above "Contributing" section to learn how to contribute.
 #### Uninstallation
 - If you installed with `npm`, run `npm uninstall -g tunnelmole`
 - On Linux or Mac, run `whereis tmole`, then `whereis tunnelmole` and delete the both files shown
-- On Windows, delete the `tmole.exe` you downloaded
+- On Windows, delete the `tmole.exe` file you downloaded
 
