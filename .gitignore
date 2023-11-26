@@ -15,6 +15,7 @@ sslcert
 packages
 /srv
 tunnelmole.bundle.js
+.nopublish
 
 #Ignore single executable binaries
 tmole.exe

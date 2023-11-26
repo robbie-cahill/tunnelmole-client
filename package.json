@@ -44,7 +44,8 @@
     "build-mac-bin": "pkg tunnelmole.bundle.js --targets node18-mac-x64 --output tmole-mac",
     "build-windows-bin": "pkg tunnelmole.bundle.js --targets node18-win-x64 --output tmole.exe",
     "build-all-bin": "npm run build && npm run rollup && npm run build-linux-bin && npm run build-mac-bin && npm run build-windows-bin",
-    "postinstall": "node cjs/bin/postinstall.js"
+    "postinstall": "node cjs/bin/postinstall.js",
+    "prepublishOnly": "node -e \"if (require('fs').existsSync('./.nopublish')) process.exit(1)\""
   },
   "bin": {
     "tmole": "dist/bin/tunnelmole.js",
