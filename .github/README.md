@@ -35,23 +35,19 @@ sudo npm install -g tunnelmole
 ```
 
 Alternatively you can install the latest precompiled binary for your platform. This has the right version of Node built in. You don't need any specific version of Node installed for this approach
-#### Linux
-Copy and paste the following into a terminal
-```
-curl -s https://tunnelmole.com/sh/install-linux.sh | sudo bash 
-```
 
-#### Mac
-Copy and paste the following into a terminal
+#### Linux, Mac and Windows Subsystem for Linux
+Copy and paste the following into a terminal:
 ```
- curl -s https://tunnelmole.com/sh/install-mac.sh --output install-mac.sh && sudo bash install-mac.sh 
+curl -O https://tunnelmole.com/sh/install.sh && sudo bash install.sh
 ```
+The script will detect your OS and install the right version.
 
 #### Windows
-We recommend installing with NPM on Windows as it sets up `.cmd` files that will allow you to run `tmole` from any folder on the command line or Powershell.
+1. [Download tmole.exe](https://tunnelmole.com/downloads/tmole.exe)
+2. Put it somewhere in your [PATH](https://www.wikihow.com/Change-the-PATH-Environment-Variable-on-Windows).
 
-Alternatively, download the `exe` file for Windows [here](https://tunnelmole.com/downloads/tmole.exe) and put it somewhere in your PATH.
-
+I'd like to have the install script for Linux and Mac also working in Cygwin and Mingw. Let me know if you're willing to help test!.
 
 #### Install with NPM
 To install Tunnelmole with NPM you need to have NodeJS installed. If not, get it from (https://nodejs.org/).
