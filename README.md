@@ -42,7 +42,7 @@ Alternatively, you can install a pre-built binary for your platform
 #### Linux, Mac and Windows Subsystem for Linux
 Copy and paste the following into a terminal:
 ```
-curl -O https://install.tunnelmole.com/xD345/install && sudo bash install.sh
+curl -O https://install.tunnelmole.com/n3d5g/install && sudo bash install
 ```
 The script will detect your OS and install the right version.
 
