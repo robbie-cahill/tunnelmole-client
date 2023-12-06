@@ -39,7 +39,7 @@ Alternatively you can install the latest precompiled binary for your platform. T
 #### Linux, Mac and Windows Subsystem for Linux
 Copy and paste the following into a terminal:
 ```
-curl -O https://tunnelmole.com/sh/install.sh && sudo bash install.sh
+curl -O https://install.tunnelmole.com/xD345/install && sudo bash install.sh
 ```
 The script will detect your OS and install the right version.
 
