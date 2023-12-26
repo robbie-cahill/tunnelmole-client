@@ -16,6 +16,7 @@ packages
 /srv
 tunnelmole.bundle.js
 .nopublish
+.nvim.lua
 
 #Ignore single executable binaries
 tmole.exe
