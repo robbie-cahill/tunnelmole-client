@@ -31,7 +31,6 @@
     "url": "https://github.com/robbie-cahill/tunnelmole-client.git"
   },
   "scripts": {
-    "prepare": "npm run build",
     "build": "tsc -p ./",
     "watch": "tsc -p ./ -w",
     "lint": "eslint . --ext .ts",
