@@ -25,11 +25,27 @@ export default async function tunnelmole(options : Options): Promise<string>
        return;
     }
 
-    let websocket = buildWebSocket(options);
-    websocket.on('close', () => {
-        console.info('Service Disconnected. Reconnecting...');
-        websocket = buildWebSocket(options, true);
-    });
+
+    let reconnectAttempts = 0;
+    const maxReconnectAttempts = 3;
+
+    const connect = () => {
+        if (reconnectAttempts >= maxReconnectAttempts) {
+            console.error('There is an issue with the Tunnelmole Service. Please try reconnecting later')
+            return;
+        }
+
+        const isReconnect = reconnectAttempts === 0 ? false : true;
+        const websocket = buildWebSocket(options, isReconnect);
+
+        websocket.on('close', () => {
+            console.info('Tunnel closed by the Tunnelmole Service (e.g. this can happen if the service restarts). Reconnecting...');
+            reconnectAttempts++;
+            connect();
+        });
+    }
+
+    connect();
 
     // Listen for the URL assigned event and return it
     return new Promise((resolve) => {
