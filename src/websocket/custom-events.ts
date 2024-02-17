@@ -1,0 +1,5 @@
+const DO_NOT_RECONNECT = 4000;
+
+export {
+    DO_NOT_RECONNECT
+}

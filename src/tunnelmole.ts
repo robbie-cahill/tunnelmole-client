@@ -10,6 +10,7 @@ import { Options } from './options.js';
 import validator from 'validator';
 import { initStorage } from './node-persist/storage.js';
 import { eventHandler, URL_ASSIGNED } from './events/event-handler.js';
+import { DO_NOT_RECONNECT } from './websocket/custom-events.js';
 
 export default async function tunnelmole(options : Options): Promise<string>
 {
@@ -38,7 +39,12 @@ export default async function tunnelmole(options : Options): Promise<string>
         const isReconnect = reconnectAttempts === 0 ? false : true;
         const websocket = buildWebSocket(options, isReconnect);
 
-        websocket.on('close', () => {
+        websocket.on('close', (code) => {
+            // Do not reconnect if the server asked us not to
+            if (code === DO_NOT_RECONNECT) {
+                return;
+            }
+
             console.info('Tunnel closed by the Tunnelmole Service (e.g. this can happen if the service restarts). Reconnecting...');
             reconnectAttempts++;
             connect();
