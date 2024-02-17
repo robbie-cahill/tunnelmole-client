@@ -25,15 +25,30 @@ export default async function tunnelmole(options : Options): Promise<string>
        return;
     }
 
+    let websocket = buildWebSocket(options);
+    websocket.on('close', () => {
+        console.info('Service Disconnected. Reconnecting...');
+        websocket = buildWebSocket(options, true);
+    });
+
+    // Listen for the URL assigned event and return it
+    return new Promise((resolve) => {
+        eventHandler.on(URL_ASSIGNED, (url: string) => {
+            resolve(url);
+        })
+    });
+}
+
+const buildWebSocket = (options: Options, reconnect = false): HostipWebSocket => {
     const websocket = new HostipWebSocket(config.hostip.endpoint);
-    const websocketIsReady = websocket.readyState === 1;
 
     const sendInitialiseMessage = async () => {
         log("Sending initialise message");
 
         const initialiseMessage : InitialiseMessage = {
             type: initialise,
-            clientId: await getClientId()
+            clientId: await getClientId(),
+            reconnect
         };
 
         // Set api key if we have one available
@@ -63,13 +78,7 @@ export default async function tunnelmole(options : Options): Promise<string>
         websocket.sendMessage(initialiseMessage);
     }
 
-    // There seems to be a bug where on a second run, the websocket is re-used and is in a ready state
-    // Send initialise message now if this is the case, otherwise set the open event to trigger the initialise message
-    if (websocketIsReady) {
-        sendInitialiseMessage();
-    } else {
-        websocket.on('open', sendInitialiseMessage);
-    }
+    websocket.on('open', sendInitialiseMessage);
 
     websocket.on('message', (text : string) => {
         const message = JSON.parse(text);
@@ -101,10 +110,5 @@ export default async function tunnelmole(options : Options): Promise<string>
         console.error(error);
     });
 
-    // Listen for the URL assigned event and return it
-    return new Promise((resolve) => {
-        eventHandler.on(URL_ASSIGNED, (url: string) => {
-            resolve(url);
-        })
-    });
+    return websocket;
 }

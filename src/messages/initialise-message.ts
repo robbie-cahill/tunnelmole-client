@@ -4,4 +4,5 @@ export default interface InitialiseMessage
     clientId: string,
     apiKey?: string,
     subdomain?: string,
+    reconnect?: boolean
 }
