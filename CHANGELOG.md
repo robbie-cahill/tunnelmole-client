@@ -1,3 +1,6 @@
+2.3.0
+- Automatically reconnect when disconnected from `tunnelmole-service` when a custom subdomain is used (for example, if the server restarts)
+
 2.0.18
 Introduce CHANGELOG
 
