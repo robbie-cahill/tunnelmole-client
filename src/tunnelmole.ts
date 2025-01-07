@@ -120,12 +120,14 @@ export default async function tunnelmole(options: Options): Promise<string> {
     const baseReconnectDelay = 1000; // Start with 1 second
 
     const attemptReconnection = () => {
+        /*
         reconnectAttempts += 1;
         const reconnectDelay = Math.min(baseReconnectDelay * Math.pow(2, reconnectAttempts - 1), maxReconnectDelay);
         setTimeout(() => {
             log(`Got disconnected, attempting to reconnect... `, "warning");
             connect();
         }, reconnectDelay);
+        */
     };
 
     // Every 6 hours, reset reconnectAttempts. This should keep reconnections fast for long lived connections.
