@@ -6,6 +6,7 @@ import domainAlreadyReserved from "./src/message-handlers/domain-already-reserve
 import domainReservationError from "./src/message-handlers/domain-reservation-error.js";
 import tooManyDomains from "./src/message-handlers/too-many-domains.js";
 import clientMessage from "./src/message-handlers/client-message.js";
+import clientDisconnect from "./src/message-handlers/client-disconnect.js";
 
 /**
  * Websocket message handlers for different message types
@@ -20,6 +21,7 @@ const messageHandlers = {
     domainReservationError,
     tooManyDomains,
     clientMessage,
+    clientDisconnect
 }
 
 export { messageHandlers };
