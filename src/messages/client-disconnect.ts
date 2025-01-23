@@ -3,7 +3,5 @@
  */
 export default interface ClientDisconnect {
     type: string,
-    message: string,
-    logLevel: string,
     exitCode?: number
 }
