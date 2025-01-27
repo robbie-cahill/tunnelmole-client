@@ -14,6 +14,7 @@ const setApiKey = async (apiKey: string) : Promise<void> => {
 
     storage.setItem(API_KEY, apiKey);
     console.info("API Key " + apiKey + " is set\n");
+    process.exit(0);
 }
 
 export {
