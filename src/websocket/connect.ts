@@ -53,7 +53,7 @@ const connect = (options: Options): HostipWebSocket => {
     if (websocketIsReady) {
         sendInitialiseMessage();
     } else {
-        websocket.on('open', sendInitialiseMessage);
+        websocket.on('open', sendInitialiseMessage); // Could potentially improve this to websocket.on('once'), but it will need testing
     }
 
     websocket.on('message', (text: string) => {
@@ -74,6 +74,7 @@ const connect = (options: Options): HostipWebSocket => {
     });
 
     // Log messages if debug is enabled
+    // Potential improvement: Combine with the other websocket.on('message') above. Requires testing, working well for now
     websocket.on('message', (text: string) => {
         const message = JSON.parse(text);
         log(Date.now() + " Received " + message.type + " message:", "info");

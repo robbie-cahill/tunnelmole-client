@@ -3,36 +3,52 @@
  * Handle automatic reconnection if a custom subdomain is used. Use a delay with exponential backoff.
  */
 import log from "../logging/log.js";
+import { Options } from "../options.js";
 import HostipWebSocket from "./host-ip-websocket";
 
-const setUpAutoReconnect = (
-    domain: string|undefined, 
-    connect: CallableFunction, 
+let reconnectAttempts = 0;
+const maxReconnectDelay = 30000; // Maximum delay of 30 seconds
+const baseReconnectDelay = 1000; // Start with 1 second
+
+
+// Every 6 hours, reset reconnectAttempts. This should keep reconnections fast for long lived connections.
+setInterval(() => {
+    reconnectAttempts = 0;
+}, 21600000);
+
+const setUpAutoReconnect = async(
+    connect: CallableFunction,
+    options: Options,
     websocket: HostipWebSocket
 ) => {
     // We can only reliably reconnect custom subdomains. Otherwise you'd get another random subdomain on reconnection
-    if (typeof domain !== 'string') {
+    if (typeof options.domain !== 'string') {
         return;
     }
 
-    let reconnectAttempts = 0;
-    const maxReconnectDelay = 30000; // Maximum delay of 30 seconds
-    const baseReconnectDelay = 1000; // Start with 1 second
+    let isReconnecting = false;
 
-    const attemptReconnection = (connect: CallableFunction) => {
+    const attemptReconnection = async (connect: CallableFunction) => {
+        if (isReconnecting) return;
+        isReconnecting = true;
+        
         reconnectAttempts += 1;
         const reconnectDelay = Math.min(baseReconnectDelay * Math.pow(2, reconnectAttempts - 1), maxReconnectDelay);
-        setTimeout(() => {
-            log(`Got disconnected, attempting to reconnect... `, "warning");
-            connect();
+        
+        setTimeout(async () => {
+            log("Got disconnected, attempting to reconnect...", "warning");
+            try {
+                const newWebsocket = await connect(options);
+                isReconnecting = false;  
+                reconnectAttempts = 0;  // Reset reconnectAttempts on successful reconnection
+                setUpAutoReconnect(connect, options, newWebsocket);
+            } catch (error) {
+                log("Reconnection attempt failed.", "error");
+                isReconnecting = false;
+                attemptReconnection(connect);
+            }
         }, reconnectDelay);
     };
-
-    // Every 6 hours, reset reconnectAttempts. This should keep reconnections fast for long lived connections.
-    setInterval(() => {
-        reconnectAttempts = 0;
-    }, 21600000);
-
 
     // Set up the websocket connection to auto reconnect
     websocket.on('close', () => {

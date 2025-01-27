@@ -15,11 +15,13 @@ export default async function tunnelmole(options: Options): Promise<string> {
     }
 
     if (options.setApiKey) {
-        return;
+        return "We are simply setting the API key here. No need to set up a tunnel";
     }
 
-    const websocket = connect(options);
-    setUpAutoReconnect(options.domain, connect, websocket);
+    const websocket = await connect(options);
+
+    // Set up auto reconnect
+    setUpAutoReconnect(connect, options, websocket);
 
     // Return the URL as soon as its assigned
     return new Promise((resolve) => {
