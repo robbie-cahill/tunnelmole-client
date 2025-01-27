@@ -25,7 +25,7 @@ const attemptReconnection = async (options: Options) => {
     if (isReconnecting) return;
     isReconnecting = true;
     
-    reconnectAttempts += 1;
+    reconnectAttempts++;
     const reconnectDelay = Math.min(baseReconnectDelay * Math.pow(2, reconnectAttempts - 1), maxReconnectDelay);
     
     setTimeout(async () => {
@@ -33,7 +33,6 @@ const attemptReconnection = async (options: Options) => {
         try {
             const newWebsocket = await connect(options);
             isReconnecting = false;  
-            reconnectAttempts = 0;  // Reset reconnectAttempts on successful reconnection
             setUpAutoReconnect(options, newWebsocket);
         } catch (error) {
             log("Reconnection attempt failed.", "error");
