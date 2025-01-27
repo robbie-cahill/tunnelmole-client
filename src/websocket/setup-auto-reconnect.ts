@@ -4,6 +4,7 @@
  */
 import log from "../logging/log.js";
 import { Options } from "../options.js";
+import { connect } from "./connect.js";
 import HostipWebSocket from "./host-ip-websocket";
 
 let reconnectAttempts = 0;
@@ -20,7 +21,7 @@ const resetTheConnectionAttemptsInterval = () => {
     }, 21600000);
 }
 
-const attemptReconnection = async (connect: CallableFunction, options: Options) => {
+const attemptReconnection = async (options: Options) => {
     if (isReconnecting) return;
     isReconnecting = true;
     
@@ -33,17 +34,16 @@ const attemptReconnection = async (connect: CallableFunction, options: Options) 
             const newWebsocket = await connect(options);
             isReconnecting = false;  
             reconnectAttempts = 0;  // Reset reconnectAttempts on successful reconnection
-            setUpAutoReconnect(connect, options, newWebsocket);
+            setUpAutoReconnect(options, newWebsocket);
         } catch (error) {
             log("Reconnection attempt failed.", "error");
             isReconnecting = false;
-            attemptReconnection(connect, options);
+            attemptReconnection(options);
         }
     }, reconnectDelay);
 };
 
 const setUpAutoReconnect = async(
-    connect: CallableFunction,
     options: Options,
     websocket: HostipWebSocket
 ) => {
@@ -54,7 +54,7 @@ const setUpAutoReconnect = async(
 
     // Set up the websocket connection to auto reconnect
     websocket.on('close', () => {
-        attemptReconnection(connect, options);
+        attemptReconnection(options);
     });
 
     resetTheConnectionAttemptsInterval();

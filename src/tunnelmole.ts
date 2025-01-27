@@ -21,7 +21,7 @@ export default async function tunnelmole(options: Options): Promise<string> {
     const websocket = await connect(options);
 
     // Set up auto reconnect
-    setUpAutoReconnect(connect, options, websocket);
+    setUpAutoReconnect(options, websocket);
 
     // Return the URL as soon as its assigned
     return new Promise((resolve) => {
