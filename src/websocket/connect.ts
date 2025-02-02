@@ -8,6 +8,7 @@ import validator from 'validator';
 import { messageHandlers } from "../../message-handlers.js";
 import HostipWebSocket from "./host-ip-websocket.js";
 import config from "../../config.js";
+import { getConnectionInfo } from "./connection-info-service.js";
 
 const connect = (options: Options): HostipWebSocket => {
     const websocket = new HostipWebSocket(config.hostip.endpoint);
@@ -16,9 +17,13 @@ const connect = (options: Options): HostipWebSocket => {
     const sendInitialiseMessage = async () => {
         log("Sending initialise message");
 
+        // Give the server basic information on the Node version and if we are using CLI or not (in which case, tunnelmole is being run from JS code)
+        const connectionInfo = getConnectionInfo();
+
         const initialiseMessage: InitialiseMessage = {
             type: initialise,
-            clientId: await getClientId()
+            clientId: await getClientId(),
+            connectionInfo            
         };
 
         // Set api key if we have one available

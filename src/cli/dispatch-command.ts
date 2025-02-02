@@ -33,7 +33,7 @@ export default async function dispatchCommand(arg0 : any, command : Command) {
 
     if (options.port) {
         // We have enough to Launch Tunnelmole
-        tunnelmole(options);
+        tunnelmole(options, true);
         return;
     }
 

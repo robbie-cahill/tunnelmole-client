@@ -4,10 +4,15 @@ import { initStorage } from './node-persist/storage.js';
 import { eventHandler, URL_ASSIGNED } from './events/event-handler.js';
 import { setUpAutoReconnect } from './websocket/setup-auto-reconnect.js';
 import { connect } from './websocket/connect.js';
+import { setIsCli } from './websocket/connection-info-service.js';
 
-export default async function tunnelmole(options: Options): Promise<string> {
+export default async function tunnelmole(
+    options: Options,
+    isCli = false
+): Promise<string> {
     await initStorage();
     await initialiseClientId();
+    setIsCli(isCli);
 
     // Set port to 3000 if port is not specified
     if (options.port === undefined) {
