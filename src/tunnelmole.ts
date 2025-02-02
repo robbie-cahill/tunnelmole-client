@@ -33,7 +33,8 @@ export default async function tunnelmole(
 Warning: You currently don't have anything running on port ${port}, which means you might get the standard 503 gateway timeout error when you make a request, since your service is not reachable. 
 
 Please start your service on port ${port} so that requests can reach your service.
-`);
+`
+        );
 
     }
 
