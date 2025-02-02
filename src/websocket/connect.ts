@@ -18,12 +18,12 @@ const connect = (options: Options): HostipWebSocket => {
         log("Sending initialise message");
 
         // Give the server basic information on the Node version and if we are using CLI or not (in which case, tunnelmole is being run from JS code)
-        const connectionInfo = getConnectionInfo();
+        const connectionInfo = await getConnectionInfo();
 
         const initialiseMessage: InitialiseMessage = {
             type: initialise,
             clientId: await getClientId(),
-            connectionInfo            
+            connectionInfo 
         };
 
         // Set api key if we have one available

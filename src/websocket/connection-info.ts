@@ -1,7 +1,8 @@
 interface ConnectionInfo {
     isCli: boolean,
     isNpm: boolean,
-    nodeVersion: string
+    nodeVersion: string,
+    tunnelmoleVersion?: string
 }
 
 export { ConnectionInfo }

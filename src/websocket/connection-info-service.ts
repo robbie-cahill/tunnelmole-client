@@ -1,3 +1,4 @@
+import { getPackageVersion } from "../../version";
 import { ConnectionInfo } from "./connection-info";
 
 /**
@@ -13,7 +14,8 @@ const setIsCli = (isCli: boolean) => {
     connectionInfo.isCli = isCli;
 };
 
-const getConnectionInfo = () => {
+const getConnectionInfo = async() => {
+    connectionInfo.tunnelmoleVersion = await getPackageVersion();
     return connectionInfo;
 }
 
