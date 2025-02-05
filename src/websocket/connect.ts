@@ -1,4 +1,3 @@
-import { log } from "console";
 import { Options } from "../options.js";
 import InitialiseMessage from "../messages/initialise-message.js";
 import { initialise } from "../messages/types.js";
@@ -9,6 +8,7 @@ import { messageHandlers } from "../../message-handlers.js";
 import HostipWebSocket from "./host-ip-websocket.js";
 import config from "../../config.js";
 import { getConnectionInfo } from "./connection-info-service.js";
+import log from "../logging/log.js";
 
 const connect = (options: Options): HostipWebSocket => {
     const websocket = new HostipWebSocket(config.hostip.endpoint);
