@@ -5,7 +5,9 @@ import { tunnelmole } from "../../src";
 import { URLSearchParams } from "url";
 import { app } from "./test-server/app";
 import config from "../../config.js";
+import detectPort from 'detect-port';
 import { ROOT_DIR } from "../../src/filesystem/constants";
+
 
 describe("Tunnelmole integration tests", () => {
     // Initialise connection
@@ -18,6 +20,12 @@ describe("Tunnelmole integration tests", () => {
 
         // Set domain for local testing to avoid the need to pause and set the hostname in /etc/hosts each time
         const domain = isLocal ? 'testsite.localhost' : undefined;
+
+        const availablePort = await detectPort(port);
+        if (availablePort !== port) {
+            console.log(`Port 3001 is already in use. Tests require this port, so exiting tests. Free up this port before running the tests again`);
+            process.exit(1);
+        }
 
         url = await tunnelmole({
             port,

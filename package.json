@@ -66,6 +66,7 @@
     "commander": "^5.1.0",
     "deep-equal": "^2.0.3",
     "deepmerge": "^4.2.2",
+    "detect-port": "^2.1.0",
     "is-number": "^7.0.0",
     "multer": "^1.4.5-lts.1",
     "nanoid": "^3.1.5",
