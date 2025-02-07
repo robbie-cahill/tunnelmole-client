@@ -17,6 +17,7 @@ import dispatchCommand from '../src/cli/dispatch-command.js';
 import { sendMessage } from '../src/telemetry/send-message.js';
 import { initStorage } from '../src/node-persist/storage.js';
 import { initialiseClientId } from '../src/identity/client-id-service.js';
+import { version } from '../version.js';
 
 // This will make tunnelmole appear in the process list
 process.title = "tunnelmole";
@@ -45,7 +46,7 @@ tunnelmole.com URLs are accessible from any unrestricted internet connection in 
 More detailed instructions, cookbooks and more are available at https://tunnelmole.com/docs
 `
         )
-        .version('2.3.4')
+        .version(version)
         .arguments('[arg0]')
         .option('--set-api-key <apiKey>', 'Set your API key. After purchasing a subscription you can copy and paste the command shown on the page')
         .option('--unreserve-subdomain <subdomain>', 'Unreserve a subdomain, for example if the number of subdomains you have reserved exceeds your limit')
