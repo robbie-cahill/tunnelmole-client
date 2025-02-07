@@ -31,7 +31,7 @@ export default async function tunnelmole(
     if (availablePort == options.port) {
         console.warn(
 `
-${chalk.yellow.bold(`You currently don't have anything running on port ${port}`)}. Please start your service on port ${chalk.bold(port)} so that requests can reach your service.
+${chalk.yellow.bold(`You currently don't have anything running on port ${port}`)}. Please start your service on port ${chalk.bold(port)} so that requests can reach your service. You may have also chosen the wrong port, in which case, find out what port your service is actually running on.
 `
         );
 
