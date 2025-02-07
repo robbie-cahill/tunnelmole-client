@@ -6,6 +6,7 @@ import { setUpAutoReconnect } from './websocket/setup-auto-reconnect.js';
 import { connect } from './websocket/connect.js';
 import { setIsCli } from './websocket/connection-info-service.js';
 import detectPort from 'detect-port';
+import chalk from 'chalk';
 
 export default async function tunnelmole(
     options: Options,
@@ -30,9 +31,7 @@ export default async function tunnelmole(
     if (availablePort == options.port) {
         console.warn(
 `
-Warning: You currently don't have anything running on port ${port}, which means you might get the standard 503 gateway timeout error when you make a request, since your service is not reachable. 
-
-Please start your service on port ${port} so that requests can reach your service.
+${chalk.yellow.bold(`You currently don't have anything running on port ${port}`)}. Please start your service on port ${port} so that requests can reach your service.
 `
         );
 
