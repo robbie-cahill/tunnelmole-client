@@ -12,13 +12,13 @@ export default async function hostnameAssigned(message: HostnameAssignedMessage,
     }
 
 
-    const httpUrl = `http://${message.hostname}`;
     const httpsUrl = `https://${message.hostname}`;
+    const httpUrl = `http://${message.hostname}`;
     const destinationUrl = `http://localhost:${port}`;
 
     if (process.env.TUNNELMOLE_QUIET_MODE !== '1') {
-        console.info(`${chalk.greenBright.bold(httpUrl)} ⟶   ${chalk.bold(destinationUrl)}`);
         console.info(`${chalk.greenBright.bold(httpsUrl)} ⟶   ${chalk.bold(destinationUrl)}`);
+        console.info(`${chalk.greenBright.bold(httpUrl)} ⟶   ${chalk.bold(destinationUrl)}`);
     }
     
     eventHandler.emit(URL_ASSIGNED, httpsUrl);
