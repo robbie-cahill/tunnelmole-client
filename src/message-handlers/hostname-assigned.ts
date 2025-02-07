@@ -17,8 +17,12 @@ export default async function hostnameAssigned(message: HostnameAssignedMessage,
     const destinationUrl = `http://localhost:${port}`;
 
     if (process.env.TUNNELMOLE_QUIET_MODE !== '1') {
+        console.info('='.repeat(process.stdout.columns));
+        console.info('Your URLs are below. Always use HTTPs for the best security');
+        console.info('');
         console.info(`${chalk.greenBright.bold(httpsUrl)} ⟶   ${chalk.bold(destinationUrl)}`);
         console.info(`${chalk.greenBright.bold(httpUrl)} ⟶   ${chalk.bold(destinationUrl)}`);
+        console.info('='.repeat(process.stdout.columns));
     }
     
     eventHandler.emit(URL_ASSIGNED, httpsUrl);
