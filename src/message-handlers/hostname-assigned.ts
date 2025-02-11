@@ -15,15 +15,30 @@ export default async function hostnameAssigned(message: HostnameAssignedMessage,
     const httpsUrl = `https://${message.hostname}`;
     const httpUrl = `http://${message.hostname}`;
     const destinationUrl = `http://localhost:${port}`;
+    const encodedHttpsUrl = Buffer.from(httpsUrl).toString('base64');
+
 
     if (process.env.TUNNELMOLE_QUIET_MODE !== '1') {
         console.info('='.repeat(process.stdout.columns));
-        console.info('Your URLs are below. Always use HTTPs for the best security');
+        console.info('Your Tunnelmole Public URLs are below and are accessible internet wide. Always use HTTPs for the best security');
         console.info('');
         console.info(`${chalk.greenBright.bold(httpsUrl)} ⟶   ${chalk.bold(destinationUrl)}`);
         console.info(`${chalk.greenBright.bold(httpUrl)} ⟶   ${chalk.bold(destinationUrl)}`);
         console.info('='.repeat(process.stdout.columns));
     }
+
+    console.info(chalk.bold('\nShare your creation with the world!'));
     
+    printSharingNetwork('Reddit', 'reddit', encodedHttpsUrl);
+    printSharingNetwork('Hacker News', 'hackernews', encodedHttpsUrl);
+    printSharingNetwork('BlueSky', 'bluesky', encodedHttpsUrl);
+    printSharingNetwork('X (Twitter)', 'twitter', encodedHttpsUrl);
+    printSharingNetwork('LinkedIn', 'linkedin', encodedHttpsUrl);
+
     eventHandler.emit(URL_ASSIGNED, httpsUrl);
+}
+
+const printSharingNetwork = (displayNetworkName: string, network: string, encodedHttpsUrl: string) => {
+    const shareUrl = `https://dashboard.tunnelmole.com/share/${network}/${encodedHttpsUrl}`;
+    console.info(`${displayNetworkName}: ${chalk.greenBright.bold(shareUrl)}`);
 }
