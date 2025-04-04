@@ -5,16 +5,19 @@ import ForwardedResponseMessage from "../messages/forwarded-response-message.js"
 import { forwardedResponse } from "../messages/types.js"
 import log from "../logging/log.js"
 import { Options } from "../options.js";
+import chalk from 'chalk';
+import { HTTP_STATUS_MESSAGES } from "../http/constants.js";
 
 export default async function forwardedRequest(forwardedRequestMessage: ForwardedRequestMessage, websocket: HostipWebSocket, options : Options) {
     const port = options.port;
-    const { requestId, url, headers } = forwardedRequestMessage;
+    const { requestId, url, headers, method } = forwardedRequestMessage;
+    const userAgentString = headers['User-Agent'] || "";
 
     // @todo: Once GET is working, add support for all HTTP methods
     const requestOptions : http.RequestOptions = {
         hostname: 'localhost',
-        method: forwardedRequestMessage.method,
-        port: port,
+        method,
+        port,
         path: url,
         headers
     };
@@ -34,7 +37,6 @@ export default async function forwardedRequest(forwardedRequestMessage: Forwarde
          * Most browsers will make more than one request, for example an extra one for favicon.ico
          */
         response.on('end', () => {
-            //@ts-ignore
             const forwardedResponseMessage : ForwardedResponseMessage = {
                 type: forwardedResponse,
                 requestId,
@@ -48,6 +50,8 @@ export default async function forwardedRequest(forwardedRequestMessage: Forwarde
                 forwardedResponseMessage.body = responseBody.toString('base64');
             }
 
+
+            console.info(`${getStatusString(response.statusCode)} ${chalk.bold.white(`${method} ${url}`)} ${userAgentString}`)
             websocket.sendMessage(forwardedResponseMessage);
         })
     });
@@ -64,3 +68,31 @@ export default async function forwardedRequest(forwardedRequestMessage: Forwarde
 
     request.end();
 }
+
+const getStatusString = (statusCode: number): string => {
+    const message = HTTP_STATUS_MESSAGES[statusCode] || 'Unknown status code';
+    
+    let formattedMessage: string;
+  
+    if (statusCode >= 100 && statusCode < 200) {
+        // Informational responses: Blue
+        formattedMessage = chalk.blue.bold(`[${statusCode} ${message}]`);
+    } else if (statusCode >= 200 && statusCode < 300) {
+        // Successful responses: Green
+        formattedMessage = chalk.green.bold(`[${statusCode} ${message}]`);
+    } else if (statusCode >= 300 && statusCode < 400) {
+        // Redirection messages: Cyan
+        formattedMessage = chalk.cyan.bold(`[${statusCode} ${message}]`);
+    } else if (statusCode >= 400 && statusCode < 500) {
+        // Client errors: Yellow
+        formattedMessage = chalk.yellow.bold(`[${statusCode} ${message}]`);
+    } else if (statusCode >= 500 && statusCode < 600) {
+        // Server errors: Red
+        formattedMessage = chalk.redBright.bold(`[${statusCode} ${message}]`);
+    } else {
+        // Fallback: White
+        formattedMessage = chalk.white.bold(`[${statusCode} ${message}]`);
+    }
+    
+    return formattedMessage;
+};

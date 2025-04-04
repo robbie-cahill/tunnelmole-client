@@ -34,6 +34,7 @@ export default async function hostnameAssigned(message: HostnameAssignedMessage,
     printSharingNetwork('BlueSky', 'bluesky', encodedHttpsUrl);
     printSharingNetwork('X (Twitter)', 'twitter', encodedHttpsUrl);
     printSharingNetwork('LinkedIn', 'linkedin', encodedHttpsUrl);
+    console.info("\n\n");
 
     eventHandler.emit(URL_ASSIGNED, httpsUrl);
 }
