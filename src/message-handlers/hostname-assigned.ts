@@ -9,8 +9,8 @@ export default async function hostnameAssigned(message: HostnameAssignedMessage,
 
     if (typeof port === 'undefined') {
         console.error('Please specify a port e.g. run "tmole 80"');
+        process.exit(1);
     }
-
 
     const httpsUrl = `https://${message.hostname}`;
     const httpUrl = `http://${message.hostname}`;
@@ -24,16 +24,13 @@ export default async function hostnameAssigned(message: HostnameAssignedMessage,
         console.info('');
         console.info(`${chalk.greenBright.bold(httpsUrl)} ⟶   ${chalk.bold(destinationUrl)}`);
         console.info(`${chalk.greenBright.bold(httpUrl)} ⟶   ${chalk.bold(destinationUrl)}`);
+        console.info('');
         console.info('='.repeat(process.stdout.columns));
     }
 
-    console.info(chalk.bold('\nShare your creation with the world!'));
-    
-    printSharingNetwork('Reddit', 'reddit', encodedHttpsUrl);
-    printSharingNetwork('Hacker News', 'hackernews', encodedHttpsUrl);
-    printSharingNetwork('BlueSky', 'bluesky', encodedHttpsUrl);
-    printSharingNetwork('X (Twitter)', 'twitter', encodedHttpsUrl);
-    printSharingNetwork('LinkedIn', 'linkedin', encodedHttpsUrl);
+    printSharingNetwork('Share to Reddit', 'reddit', encodedHttpsUrl);
+    printSharingNetwork('Share to X/Twitter', 'twitter', encodedHttpsUrl);
+    printSharingNetwork('Share to Hacker News', 'hackernews', encodedHttpsUrl);
     console.info("\n\n");
 
     eventHandler.emit(URL_ASSIGNED, httpsUrl);
@@ -41,5 +38,5 @@ export default async function hostnameAssigned(message: HostnameAssignedMessage,
 
 const printSharingNetwork = (displayNetworkName: string, network: string, encodedHttpsUrl: string) => {
     const shareUrl = `https://dashboard.tunnelmole.com/share/${network}/${encodedHttpsUrl}`;
-    console.info(`${displayNetworkName}: ${chalk.greenBright.bold(shareUrl)}`);
+    console.info(`${displayNetworkName}: ${chalk.blue.bold(shareUrl)}`);
 }
