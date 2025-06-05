@@ -28,9 +28,9 @@ export default async function hostnameAssigned(message: HostnameAssignedMessage,
         console.info('='.repeat(process.stdout.columns));
     }
 
-    printSharingNetwork('Share to Reddit', 'reddit', encodedHttpsUrl);
-    printSharingNetwork('Share to X/Twitter', 'twitter', encodedHttpsUrl);
-    printSharingNetwork('Share to Hacker News', 'hackernews', encodedHttpsUrl);
+    printSharingNetwork(chalk.bold("Share to Reddit"), 'reddit', encodedHttpsUrl);
+    printSharingNetwork(chalk.bold("Share to X/Twitter"), 'twitter', encodedHttpsUrl);
+    printSharingNetwork(chalk.bold("Share to Hacker News"), 'hackernews', encodedHttpsUrl);
     console.info("\n\n");
 
     eventHandler.emit(URL_ASSIGNED, httpsUrl);
