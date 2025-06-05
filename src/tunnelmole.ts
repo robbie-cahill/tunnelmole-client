@@ -34,7 +34,7 @@ export default async function tunnelmole(
 ${chalk.yellow.bold(`
     You currently don't have anything running on port ${port}`)}. 
     
-    For Tunnelmole to work, you'll need to start your service on port ${chalk.bold(port)} so that requests from the internet can reach your service. 
+    For Tunnelmole to work, you'll need to start your service on port ${chalk.bold(port)} so that requests from the internet can reach your service, then restart Tunnelmole. 
     
     You may have also chosen the wrong port, in which case, find out what port your service is actually running on and start Tunnelmole with that port instead.
 `
