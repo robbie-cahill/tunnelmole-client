@@ -27,6 +27,13 @@ describe("Tunnelmole integration tests", () => {
             process.exit(1);
         }
 
+        // Start the test express app listening on `localhost{$port}` 
+        await new Promise((resolve) => {
+            app.listen(port, () => {
+                resolve(true);            
+            }); 
+        }); 
+
         url = await tunnelmole({
             port,
             domain
@@ -36,13 +43,6 @@ describe("Tunnelmole integration tests", () => {
         if (isLocal) {
             url = 'http://testsite.localhost:8001'
         }
-
-         // Start the test express app listening on `localhost{$port}` 
-        await new Promise((resolve) => {
-            app.listen(port, () => {
-                resolve(true);            
-            }); 
-        }); 
     })
 
     it("GET HTML document", async () => {
