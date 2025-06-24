@@ -73,8 +73,10 @@ Now that you have a working installation:
 Here's what it should look like
 ```
 $ tmole 8080
-http://evgtkh-ip-49-145-166-122.tunnelmole.net is forwarding to localhost:8080
-https://evgtkh-ip-49-145-166-122.tunnelmole.net is forwarding to localhost:8080
+Your Tunnelmole Public URLs are below and are accessible internet wide. Always use HTTPs for the best security
+
+https://cqcu2t-ip-49-185-26-79.tunnelmole.net ⟶ http://localhost:3001
+http://cqcu2t-ip-49-185-26-79.tunnelmole.net ⟶ http://localhost:3001
 ```
 
 Now, just go to either one of the URLs shown with your web browser.
