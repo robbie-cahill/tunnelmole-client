@@ -75,8 +75,8 @@ Here's what it should look like
 $ tmole 8080
 Your Tunnelmole Public URLs are below and are accessible internet wide. Always use HTTPs for the best security
 
-https://cqcu2t-ip-49-185-26-79.tunnelmole.net ⟶ http://localhost:3001
-http://cqcu2t-ip-49-185-26-79.tunnelmole.net ⟶ http://localhost:3001
+https://cqcu2t-ip-49-185-26-79.tunnelmole.net ⟶ http://localhost:8080
+http://cqcu2t-ip-49-185-26-79.tunnelmole.net ⟶ http://localhost:8080
 ```
 
 Now, just go to either one of the URLs shown with your web browser.
