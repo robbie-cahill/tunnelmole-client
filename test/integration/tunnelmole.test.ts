@@ -7,7 +7,11 @@ import { app } from "./test-server/app";
 import config from "../../config.js";
 import detectPort from 'detect-port';
 import { ROOT_DIR } from "../../src/filesystem/constants";
+import zlib from 'zlib';
+import { promisify } from 'util';
+import { nanoid } from 'nanoid';
 
+const gzip = promisify(zlib.gzip);
 
 describe("Tunnelmole integration tests", () => {
     // Initialise connection
@@ -44,6 +48,25 @@ describe("Tunnelmole integration tests", () => {
             url = 'http://testsite.localhost:8001'
         }
     })
+
+    it("POST with gzip-encoded body", async () => {
+        const body = JSON.stringify({ test: "gzip-test" });
+        const compressedBody = await gzip(Buffer.from(body));
+        
+        const response = await fetch(url + '/api-post-gzip', {
+            method: "POST",
+            headers: {
+                'Content-Encoding': 'gzip',
+                'Content-Type': 'application/json'
+            },
+            body: compressedBody
+        });
+        
+        // Verify the server successfully decompressed and parsed the payload
+        expect(response.status).toBe(200);
+        const json = await response.json();
+        expect(json.test).toEqual("gzip-test");
+    });
 
     it("GET HTML document", async () => {
         const response = await fetch(url);
@@ -99,6 +122,7 @@ describe("Tunnelmole integration tests", () => {
     });
 
     it("Upload binary photo", async() => {
+        const BUFFER_EQUALS_TRUE = 0; // You wouldn't believe it but 0 is true in this case
         const image : Buffer = fs.readFileSync(`${ROOT_DIR}/test/integration/files/img/test-image.png`);
 
         const response = await fetch(url + '/image-upload', {
@@ -111,7 +135,7 @@ describe("Tunnelmole integration tests", () => {
 
         const equal = Buffer.compare(image, responseBuffer);
 
-        expect(equal).toBe(1);
+        expect(equal).toBe(BUFFER_EQUALS_TRUE);
     });
 
     it("Submit multipart/form-data with image and text field as POST", async() => {
@@ -132,5 +156,14 @@ describe("Tunnelmole integration tests", () => {
         const responseData = await response.json();
         expect(responseData.firstName).toEqual("John");
         expect(responseData.filename).toEqual('test-image.png');
+
+        const savedFilePath = responseData.savedPath;
+        expect(savedFilePath).toMatch(/^\/tmp\//);
+
+        const savedImage = fs.readFileSync(savedFilePath);
+        const equal = Buffer.compare(image, savedImage);
+        expect(equal).toBe(0);
+
+        fs.unlinkSync(savedFilePath);
     });
 })
