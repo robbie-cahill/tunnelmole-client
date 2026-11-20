@@ -1,98 +1,85 @@
 import HostipWebSocket from "../websocket/host-ip-websocket.js"
 import ForwardedRequestMessage from "../messages/forwarded-request-message.js"
-import http from 'http';
 import ForwardedResponseMessage from "../messages/forwarded-response-message.js"
 import { forwardedResponse } from "../messages/types.js"
 import log from "../logging/log.js"
 import { Options } from "../options.js";
 import chalk from 'chalk';
-import { HTTP_STATUS_MESSAGES } from "../http/constants.js";
+import { requestLocal } from "../http/local-request.js";
+import { getStatusString } from "../http/status.js";
 
-export default async function forwardedRequest(forwardedRequestMessage: ForwardedRequestMessage, websocket: HostipWebSocket, options : Options) {
-    const port = options.port;
-    const { requestId, url, headers, method } = forwardedRequestMessage;
-    const userAgentString = headers['User-Agent'] || "";
-
-    // @todo: Once GET is working, add support for all HTTP methods
-    const requestOptions : http.RequestOptions = {
-        hostname: 'localhost',
-        method,
-        port,
-        path: url,
-        headers
-    };
-
-    const request = http.request(requestOptions, (response : http.IncomingMessage) => {
-        let responseBody : Buffer;
-        response.on('data', (chunk: Buffer) => {
-            if (typeof responseBody === 'undefined') {
-                responseBody = chunk;
-            } else {
-                responseBody = Buffer.concat([responseBody, chunk]);
-            }
-        });
-
-        /**
-         * If you see this callback being called more than once, this is probably normal especially if a browser initiated the request
-         * Most browsers will make more than one request, for example an extra one for favicon.ico
-         */
-        response.on('end', () => {
-            const forwardedResponseMessage : ForwardedResponseMessage = {
-                type: forwardedResponse,
-                requestId,
-                statusCode: response.statusCode,
-                url,
-                headers: response.headers,
-                body: ''
-            }
-
-            if (Buffer.isBuffer(responseBody)) {
-                forwardedResponseMessage.body = responseBody.toString('base64');
-            }
-
-
-            console.info(`${getStatusString(response.statusCode)} ${chalk.bold.white(`${method} ${url}`)} ${userAgentString}`)
-            websocket.sendMessage(forwardedResponseMessage);
-        })
-    });
-
-    // Send the request body if its not empty
-    if (forwardedRequestMessage.body !== '') {
-        const requestBody : Buffer = Buffer.from(forwardedRequestMessage.body, 'base64');
-        request.write(requestBody);
-    }
-
-    request.on('error', (error : any) => {
-        log(error);
-    });
-
-    request.end();
+/**
+ * Forwarded requests are handled asynchronously, but this function is intentionally synchronous.
+ *
+ * The websocket message loop must keep dispatching other requests while this one is in flight.
+ * If anything in the dispatch path awaited this handler, the tunnel would send one request at a
+ * time and a slow response from the local service would hold up every other request.
+ */
+export default function forwardedRequest(forwardedRequestMessage: ForwardedRequestMessage, websocket: HostipWebSocket, options : Options) {
+    void forwardToLocalServer(forwardedRequestMessage, options).then(
+        (responseMessage) => sendResponse(websocket, responseMessage),
+        (error) => {
+            log(toLogString(error), 'error');
+            sendResponse(websocket, buildErrorResponse(forwardedRequestMessage, 502));
+        }
+    );
 }
 
-const getStatusString = (statusCode: number): string => {
-    const message = HTTP_STATUS_MESSAGES[statusCode] || 'Unknown status code';
-    
-    let formattedMessage: string;
-  
-    if (statusCode >= 100 && statusCode < 200) {
-        // Informational responses: Blue
-        formattedMessage = chalk.blue.bold(`[${statusCode} ${message}]`);
-    } else if (statusCode >= 200 && statusCode < 300) {
-        // Successful responses: Green
-        formattedMessage = chalk.green.bold(`[${statusCode} ${message}]`);
-    } else if (statusCode >= 300 && statusCode < 400) {
-        // Redirection messages: Cyan
-        formattedMessage = chalk.cyan.bold(`[${statusCode} ${message}]`);
-    } else if (statusCode >= 400 && statusCode < 500) {
-        // Client errors: Yellow
-        formattedMessage = chalk.yellow.bold(`[${statusCode} ${message}]`);
-    } else if (statusCode >= 500 && statusCode < 600) {
-        // Server errors: Red
-        formattedMessage = chalk.redBright.bold(`[${statusCode} ${message}]`);
-    } else {
-        // Fallback: White
-        formattedMessage = chalk.white.bold(`[${statusCode} ${message}]`);
+const forwardToLocalServer = async (forwardedRequestMessage : ForwardedRequestMessage, options : Options) : Promise<ForwardedResponseMessage> => {
+    const { requestId, url, headers, method } = forwardedRequestMessage;
+
+    if (typeof options.port !== 'number') {
+        throw new Error('Cannot forward request: no local port was configured');
     }
-    
-    return formattedMessage;
-};
+
+    const response = await requestLocal({
+        hostname: 'localhost',
+        method,
+        port: options.port,
+        path: url,
+        headers
+    }, forwardedRequestMessage.body);
+
+    const userAgentString = headers['User-Agent'] || "";
+    console.info(`${getStatusString(response.statusCode)} ${chalk.bold.white(`${method} ${url}`)} ${userAgentString}`)
+
+    return {
+        type: forwardedResponse,
+        requestId,
+        url,
+        statusCode: response.statusCode,
+        headers: response.headers,
+        body: response.body.toString('base64')
+    };
+}
+
+/**
+ * The service expects exactly one response per request. If the local service can't be reached,
+ * send a 502 rather than leaving the public request hanging.
+ */
+const buildErrorResponse = (forwardedRequestMessage : ForwardedRequestMessage, statusCode : number) : ForwardedResponseMessage => {
+    const { requestId, url } = forwardedRequestMessage;
+    const body = 'Tunnelmole could not get a response from the local service. Check that the service is running and listening on the expected port.';
+
+    return {
+        type: forwardedResponse,
+        requestId,
+        url,
+        statusCode,
+        headers: { 'content-type': 'text/plain; charset=utf-8' },
+        body: Buffer.from(body).toString('base64')
+    };
+}
+
+const sendResponse = (websocket : HostipWebSocket, responseMessage : ForwardedResponseMessage) => {
+    try {
+        websocket.sendMessage(responseMessage);
+    } catch (error) {
+        // The websocket can close while a request is in flight
+        log(toLogString(error), 'error');
+    }
+}
+
+const toLogString = (error : unknown) : string => {
+    return error instanceof Error ? error.stack ?? error.message : String(error);
+}
