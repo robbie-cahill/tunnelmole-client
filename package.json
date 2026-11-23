@@ -1,6 +1,6 @@
 {
   "name": "tunnelmole",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "Tunnelmole, an open source ngrok alternative. Instant public URLs for any http/https based application. Available as a command line application or as an NPM dependency for your code. Stable and maintained. Good test coverage. Works behind firewalls",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -31,6 +31,8 @@
     "url": "https://github.com/robbie-cahill/tunnelmole-client.git"
   },
   "scripts": {
+    "version": "node write-version.mjs && git add version.ts",
+    "prebuild": "node write-version.mjs",
     "build": "tsc -p ./",
     "watch": "tsc -p ./ -w",
     "lint": "eslint . --ext .ts",
@@ -44,7 +46,7 @@
     "build-windows-bin": "pkg tunnelmole.bundle.js --targets node18-win-x64 --output tmole.exe",
     "build-all-bin": "npm run build && npm run rollup && npm run build-linux-bin && npm run build-mac-bin && npm run build-windows-bin",
     "postinstall": "node cjs/bin/postinstall.js",
-    "prepublishOnly": "node -e \"if (require('fs').existsSync('./.nopublish')) process.exit(1)\""
+    "prepublishOnly": "node write-version.mjs && npm run build && node -e \"if (require('fs').existsSync('./.nopublish')) process.exit(1)\""
   },
   "bin": {
     "tmole": "dist/bin/tunnelmole.js",
