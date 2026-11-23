@@ -14,7 +14,7 @@ config-instance.local.ts
 sslcert
 packages
 /srv
-tunnelmole.bundle.js
+tunnelmole.bundle.cjs
 .nopublish
 .nvim.lua
 

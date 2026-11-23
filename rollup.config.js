@@ -5,7 +5,7 @@ import json from '@rollup/plugin-json';
 export default {
     input: 'dist/bin/tunnelmole.js',
     output: {
-        file: "tunnelmole.bundle.js",
+        file: "tunnelmole.bundle.cjs",
         format: 'cjs'
     },
     plugins: [
